@@ -1,0 +1,18 @@
+.title {
+  font-family: var(--font-title);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0em;
+  color: var(--graytext);
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 40px;
+    line-height: 49px;
+    text-align: left;
+  }
+}

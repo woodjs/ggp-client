@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["/*"],
+      "@/components/*": ["components/*"],
+      "@/providers/*": ["providers/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/hocs/*": ["hocs/*"],
+      "@/utils/*": ["commons/utils/*"],
+      "@/services/*": ["commons/services/*"],
+      "@/api": ["commons/api"],
+      // FSD
+      "@/shared/*": ["shared/*"],
+      "@/entities/*": ["entities/*"],
+      "@/features/*": ["features/*"],
+      "@/widgets/*": ["widgets/*"]
+    }
+  }
+}

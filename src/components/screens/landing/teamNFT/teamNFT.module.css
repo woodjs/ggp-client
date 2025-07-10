@@ -1,0 +1,54 @@
+.point {
+  font-family: var(--font-title);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.circle {
+  /* position: absolute; */
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--green);
+  box-shadow: #35cb3387 0px 0px 0px 4px;
+}
+.stack {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 130px;
+  position: relative;
+  padding-bottom: 80px;
+}
+.HStack {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .stack {
+    padding-bottom: 0;
+    gap: 50px;
+    flex-direction: column;
+  }
+  .circle {
+    right: auto;
+    left: -10px;
+  }
+  .point {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 1100px) {
+  .stack {
+    padding-bottom: 0;
+    gap: 50px;
+    flex-direction: column;
+  }
+}

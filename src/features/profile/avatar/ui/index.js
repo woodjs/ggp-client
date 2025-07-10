@@ -1,0 +1,1 @@
+export { AvatarCircleFeature } from './Avatar';

@@ -1,0 +1,56 @@
+.program__bg {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-image: url('/images/landing/partnerProgram_bg.png');
+  background-size: cover;
+}
+
+.program__title {
+  margin-bottom: 60px;
+}
+
+.program__wrap {
+  display: flex;
+}
+
+.program__item:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.program__item:last-child {
+  padding-right: 0;
+}
+
+.program__item {
+  flex-basis: 25%;
+  padding: 20px;
+  border-left: solid #35cb33 1px;
+}
+
+.program__sum {
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+@media all and (max-width: 1024px) {
+  .program__wrap {
+    flex-wrap: wrap;
+  }
+
+  .program__item {
+    flex-basis: 50%;
+  }
+
+  .program__item:first-child {
+    border-left: solid #35cb33 1px;
+    padding-left: 20px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .program__item {
+    flex-basis: 100%;
+  }
+}

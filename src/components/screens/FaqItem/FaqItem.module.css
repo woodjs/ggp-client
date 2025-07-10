@@ -1,0 +1,16 @@
+.faq__header {
+  border: solid 1px #333333;
+  padding: 20px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.faq__ico {
+  font-weight: bold;
+}
+
+.faq__text {
+  margin-top: 20px;
+}

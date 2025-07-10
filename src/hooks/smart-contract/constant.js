@@ -1,0 +1,6 @@
+export const ADDRESS_CONTRACT_NFT =
+  '0xf1d78021ccfa787ac7d4da09c816acc8817faaed';
+// '0xa1de5772be59cb3dd5b57bab80d4ae18cd93365b';
+export const ADDRESS_CRYPTOCURRENCY =
+  '0xdac17f958d2ee523a2206206994597c13d831ec7';
+// '0xd97931ac426029a03f2bde7bfeb48b7119b01d06';

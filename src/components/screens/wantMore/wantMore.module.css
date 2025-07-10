@@ -1,0 +1,49 @@
+.wantMore {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-image: url('/images/landing/wantMore_bg.png');
+  background-size: cover;
+}
+
+.wantMore__wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wantMore__text_wrap {
+  max-width: 650px;
+}
+
+.wantMore__title {
+  margin-bottom: 40px;
+}
+
+.wantMore__btn {
+  margin-bottom: 60px;
+}
+
+.wantMore__img {
+  width: 100%;
+}
+
+.wantMore__img_wrap {
+  max-width: 550px;
+}
+
+.wantMore__social {
+  gap: 60px;
+}
+
+@media all and (max-width: 768px) {
+  .wantMore__img {
+    display: none;
+  }
+
+  .wantMore__wrap {
+    justify-content: center;
+  }
+
+  .wantMore__social {
+    display: none;
+  }
+}

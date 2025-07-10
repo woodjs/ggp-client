@@ -1,0 +1,91 @@
+.cardText {
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  max-width: 700px;
+  z-index: 3;
+}
+.cardTitle {
+  font-family: var(--font-title);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.card {
+  margin-top: 40px;
+  background: rgba(6, 61, 3, 0.5);
+  padding: 40px;
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+  z-index: 3;
+}
+.text {
+  max-width: 562px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  z-index: 40;
+}
+.image {
+  height: 90%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  z-index: 1;
+}
+.wrapper {
+  position: relative;
+  border-bottom: 1px solid #797979;
+  z-index: 1;
+}
+.nowrap {
+  white-space: nowrap;
+}
+@media (max-width: 1210px) {
+  .image {
+    display: none;
+  }
+  .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .cardTitle {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+  .text {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 160%;
+  }
+  .cardTitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
+  }
+  .cardText {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

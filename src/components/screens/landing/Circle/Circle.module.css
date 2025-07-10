@@ -1,0 +1,8 @@
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--green);
+  box-shadow: #35cb3387 0px 0px 0px 4px;
+  flex-shrink: 0;
+}

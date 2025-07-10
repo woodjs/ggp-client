@@ -1,0 +1,187 @@
+import LangaugeSelect from '@/components/layout/Cabinet/LangaugeSelect/LangaugeSelect';
+import { Box, Image } from '@chakra-ui/react';
+import LoginForm from './LoginForm';
+
+export default function LoginDesktopForm({ ...rest }) {
+  return (
+    <>
+      <LoginForm {...rest}>
+        <Box display={{ base: 'none', lg: 'block' }} id="desktop">
+          <Image
+            src="/images/auth/leaf-1.png"
+            alt=""
+            pos="absolute"
+            boxSize="274px"
+            top="-60px"
+            left="-200px"
+          />
+          <Image
+            src="/images/auth/leaf-4.png"
+            alt=""
+            pos="absolute"
+            boxSize="277px"
+            bottom="-40px"
+            right="-170px"
+            zIndex={-1}
+          />
+          <Image
+            src="/images/auth/coin-3.png"
+            alt=""
+            pos="absolute"
+            w="74px"
+            h="93px"
+            top="50%"
+            transform="translateY(-50%)"
+            right="-50px"
+            zIndex={-1}
+          />
+          <Image
+            src="/images/auth/coin-4.png"
+            alt=""
+            pos="absolute"
+            w="95px"
+            h="79px"
+            top="80px"
+            right="-210px"
+            zIndex={-1}
+          />
+        </Box>
+
+        <Box display={{ base: 'none', md: 'block', lg: 'none' }} id="tablet">
+          <Image
+            src="/images/auth/login/leaf-tablet.png"
+            objectFit="contain"
+            alt=""
+            w="400px"
+            h="400px"
+            pos="absolute"
+            top="-100px"
+            left="-114px"
+          />
+          <Image
+            src="/images/auth/coin-2.png"
+            alt=""
+            w="63px"
+            h="79px"
+            pos="absolute"
+            top="30px"
+            zIndex={-1}
+            left="150px"
+          />
+          <Image
+            src="/images/auth/leaf-1.png"
+            alt=""
+            w="274px"
+            h="274px"
+            pos="absolute"
+            zIndex={-1}
+            right="104px"
+            top="-90px"
+          />
+          <Image
+            src="/images/auth/coin-3.png"
+            alt=""
+            w="63px"
+            h="79px"
+            pos="absolute"
+            zIndex={-1}
+            left="64px"
+            bottom="30px"
+          />
+          <Image
+            src="/images/auth/coin-4.png"
+            alt=""
+            w="95px"
+            h="79px"
+            pos="absolute"
+            right="-15px"
+            bottom="-20px"
+          />
+          <Image
+            src="/images/auth/leaf-3.png"
+            alt=""
+            boxSize="400px"
+            pos="absolute"
+            left="50%"
+            transform="translateX(-50%)"
+            bottom="-150px"
+            zIndex={-1}
+          />
+        </Box>
+
+        <Box display={{ base: 'block', md: 'none' }} id="mobile">
+          <Image
+            src="/images/auth/leaf-1.png"
+            objectFit="cover"
+            alt=""
+            w="274px"
+            h="274px"
+            pos="absolute"
+            top="-100px"
+            right="-120px"
+            zIndex={-1}
+          />
+          <Image
+            src="/images/auth/leaf-3.png"
+            alt=""
+            w="186px"
+            h="186px"
+            pos="absolute"
+            left="-94px"
+            bottom="-66px"
+            zIndex={-1}
+            transform="rotate(-23deg)"
+          />
+          <Image
+            src="/images/auth/coin-2.png"
+            alt=""
+            w="63px"
+            h="79px"
+            pos="absolute"
+            top="30px"
+            zIndex={-1}
+            left="-50px"
+            filter="blur(2px)"
+          />
+          <Image
+            src="/images/auth/coin-3.png"
+            alt=""
+            w="63px"
+            h="79px"
+            pos="absolute"
+            zIndex={-1}
+            right="68px"
+            bottom="-60px"
+          />
+        </Box>
+        <Image
+          style={{
+            position: 'absolute',
+            zIndex: '-1',
+            right: '-150px',
+            top: '-100px',
+          }}
+          src="/images/promo-modal/expansion/pine2.png"
+          alt="pine"
+          width={270}
+          height={340}
+        />
+        <Image
+          style={{
+            position: 'absolute',
+            zIndex: '-1',
+            bottom: '-100px',
+            left: '-140px',
+          }}
+          src="/images/promo-modal/expansion/pine3.png"
+          alt="pine"
+          width={270}
+          height={340}
+        />
+      </LoginForm>
+      <Box position="absolute" top="20px" right="20px">
+        <LangaugeSelect />
+      </Box>
+    </>
+  );
+}

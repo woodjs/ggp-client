@@ -1,0 +1,64 @@
+.contacts {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-image: url('/images/landing/contacts_bg.png');
+  background-size: cover;
+}
+
+.contacts__title {
+  margin-bottom: 60px;
+}
+
+.contacts__wrap {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+}
+
+.contacts__desc {
+  position: relative;
+  z-index: 1;
+  font-size: 40px;
+  max-width: 850px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.contacts__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media all and (max-width: 1024px) {
+  .contacts__wrap {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.nyImage2 {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nyImage {
+    display: none;
+  }
+  .nyImage2 {
+    display: block;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .contacts__info {
+    text-align: center;
+  }
+
+  .contacts__desc {
+    font-size: 24px;
+  }
+}

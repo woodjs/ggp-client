@@ -1,0 +1,25 @@
+.social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: var(--graylight);
+}
+
+.social-icon:hover {
+  opacity: 0.5;
+}
+
+.social-icon:active {
+  /* transform: scale(0.95); */
+  color: var(--green);
+  opacity: 1;
+}
+.social-icon-yellow:active {
+  color: rgb(255, 220, 63);
+}
+[data-is-light='true'] .social-icon {
+  color: rgb(36, 36, 36);
+  /* fill: rgb(36, 36, 36); */
+}

@@ -1,0 +1,18 @@
+.social-list {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.link {
+  line-height: 0;
+}
+@media (max-width: 320px) {
+  .social-list {
+    gap: 10px;
+  }
+}

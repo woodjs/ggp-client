@@ -1,0 +1,173 @@
+.image {
+  height: 32px;
+  margin-top: 5px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 15px 0;
+}
+
+.wrap {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-left: 50px;
+}
+.text {
+  color: rgb(176, 173, 173);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: left;
+  animation: onOpen 0.2s;
+  transition: 0.2s;
+}
+.text[data-is-light='true'] {
+  color: rgb(36, 36, 36);
+}
+.text:hover {
+  color: #ffffff;
+  transition: color 0.3s;
+}
+.text[data-is-light='true']:hover {
+  color: rgb(60, 60, 60);
+}
+.unselected-link {
+  position: relative;
+}
+.unselected-link::after {
+  animation: slideOut 0.2s ease-in-out;
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: var(--green);
+}
+.unselected-link-right::after {
+  animation: slideOutRight 0.2s ease-in-out;
+}
+.selected-link {
+  color: #ffffff;
+  position: relative;
+}
+.selected-link::after {
+  animation: slideIn 0.2s ease-in-out;
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--green);
+}
+.selected-link-right::after {
+  animation: slideInRight 0.2s ease-in-out;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  margin-left: auto;
+}
+.button {
+  font-size: 14px;
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+.burger {
+  display: none;
+}
+.mobilelist {
+  display: grid;
+  gap: 20px;
+}
+.langauge {
+  display: none;
+  margin-right: auto;
+}
+@media (max-width: 1320px) {
+  .list {
+    display: none;
+  }
+  .burger {
+    margin-left: 20px;
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  .buttons {
+    display: none;
+  }
+  .burger {
+    margin-left: auto;
+  }
+  .langauge {
+    display: block;
+  }
+}
+.right::after {
+  right: 0;
+}
+.left::after {
+  left: 0;
+}
+@keyframes slideIn {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes slideInRight {
+  0% {
+    width: 0;
+    right: 0;
+  }
+  100% {
+    right: 0;
+    width: 100%;
+  }
+}
+@keyframes slideOut {
+  0% {
+    width: 100%;
+    right: 0;
+  }
+  100% {
+    right: 0;
+    width: 0;
+  }
+}
+@keyframes slideOutRight {
+  0% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    right: 0;
+    left: 0;
+  }
+}
+@keyframes onOpen {
+  0% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: hidden;
+  }
+}

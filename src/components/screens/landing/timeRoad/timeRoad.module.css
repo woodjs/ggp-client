@@ -1,0 +1,162 @@
+.timeRoad_wrap {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+.title {
+  padding-top: 70px;
+}
+.timeRoad__item_right {
+  align-self: end;
+}
+
+.timeRoad__item {
+  width: 50%;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.timeRoad__item_right .timeRoad__title {
+  margin-left: 70px;
+}
+
+.timeRoad__item_right .timeRoad__info {
+  margin-left: 70px;
+}
+
+.timeRoad__item_left .timeRoad__title {
+  margin-right: 70px;
+}
+
+.timeRoad__item_left .timeRoad__info {
+  margin-right: 70px;
+}
+
+.timeRoad__info {
+  padding-left: 20px;
+}
+
+.timeRoad__title {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: var(--font-title);
+  margin-bottom: 10px;
+}
+
+.timeRoad {
+  position: relative;
+  padding: 150px 0;
+  padding-top: 75px;
+}
+
+.timeRoad_wrap:after {
+  content: ' ';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #35cb33;
+  top: 0;
+}
+
+.timeRoad_wrap:before {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  content: ' ';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #35cb33;
+  border-radius: 50%;
+  border: 3px solid rgba(6, 61, 3, 0.5);
+}
+
+.timeRoad__line {
+  width: 100%;
+  height: 1px;
+  background: #35cb33;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.timeRoad__item_left .timeRoad__line:after {
+  right: -10px;
+  left: auto;
+}
+
+.timeRoad__line:after {
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  content: ' ';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #35cb33;
+  border-radius: 50%;
+  border: 3px solid rgba(6, 61, 3, 0.5);
+}
+
+.hideOnMobile {
+  display: none;
+}
+
+.showOnMobile {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .hideOnMobile {
+    display: block;
+  }
+  .showOnMobile {
+    display: none;
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .timeRoad_wrap {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 550px) {
+  .timeRoad__item {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .timeRoad__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeRoad__item_right {
+    align-self: start;
+  }
+
+  .timeRoad__line {
+    display: none;
+  }
+
+  .timeRoad__wrap {
+    gap: 30px;
+  }
+
+  .timeRoad_wrap:after {
+    display: none;
+  }
+  .timeRoad__item_right .timeRoad__title {
+    margin-left: 0;
+  }
+
+  .timeRoad__item_right .timeRoad__info {
+    margin-left: 0;
+  }
+  .timeRoad_wrap:before {
+    content: none;
+  }
+}

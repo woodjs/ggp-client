@@ -1,0 +1,8 @@
+.green {
+  color: var(--green);
+}
+
+.shadow {
+  color: var(--green);
+  text-shadow: #35cb33 0 0 30px;
+}
