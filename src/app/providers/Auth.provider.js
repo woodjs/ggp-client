@@ -13,69 +13,69 @@ import { useDisclosure } from '@chakra-ui/react';
 import { useProfile } from '@/entities/profile';
 
 const AuthProvider = ({ children }) => {
-  const router = useRouter();
-  const [prevRouter, setPrevRouter] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+	const router = useRouter();
+	const [prevRouter, setPrevRouter] = useState('');
+	const [isLoading, setIsLoading] = useState(true);
 
-  // Delete
-  const { data: profile } = useProfile();
-  const { isOpen, onClose, onOpen } = useDisclosure();
+	// Delete
+	const { data: profile } = useProfile();
+	const { isOpen, onClose, onOpen } = useDisclosure();
 
-  // const { data } = useTelegram();
+	// const { data } = useTelegram();
 
-  // useEffect(() => {
-  //   if (!data) return;
-  //   if (!data.isLinked) {
-  //     onOpen();
-  //   }
-  // }, [data]);
+	// useEffect(() => {
+	//   if (!data) return;
+	//   if (!data.isLinked) {
+	//     onOpen();
+	//   }
+	// }, [data]);
 
-  useEffect(() => {
-    if (!profile) return;
+	useEffect(() => {
+		if (!profile) return;
 
-    if (!profile.avatar) {
-      onOpen();
-    }
-  }, [profile]);
+		if (!profile.avatar) {
+			onOpen();
+		}
+	}, [profile]);
 
-  useEffect(() => {
-    setIsLoading(true);
-    (async () => {
-      const accessToken = getAccessToken();
-      if (!accessToken) return router.push('/auth/login');
+	useEffect(() => {
+		setIsLoading(true);
+		(async () => {
+			const accessToken = getAccessToken();
+			if (!accessToken) return router.push('/auth/login');
+			return router.push('/auth/login');
+			try {
+				const decoded = jwt.decode(accessToken);
 
-      try {
-        const decoded = jwt.decode(accessToken);
+				if (decoded.exp < Date.now() / 1000) {
+					await baseApi.put('/auth/refresh-tokens');
+				}
+			} catch (error) {
+				removeAccessToken();
+				return router.push('/auth/login');
+			}
 
-        if (decoded.exp < Date.now() / 1000) {
-          await baseApi.put('/auth/refresh-tokens');
-        }
-      } catch (error) {
-        removeAccessToken();
-        return router.push('/auth/login');
-      }
+			setTimeout(() => setIsLoading(false), 300);
+			setPrevRouter(router.pathname);
+		})();
+	}, [router.pathname]);
 
-      setTimeout(() => setIsLoading(false), 300);
-      setPrevRouter(router.pathname);
-    })();
-  }, [router.pathname]);
+	if (isLoading || prevRouter !== router.pathname)
+		return <LoaderWindow visible h="100vh" />;
 
-  if (isLoading || prevRouter !== router.pathname)
-    return <LoaderWindow visible h="100vh" />;
-
-  return (
-    <>
-      {/* <ModalTelegramBotIntegration
+	return (
+		<>
+			{/* <ModalTelegramBotIntegration
         isOpen={isOpen}
         onClose={onClose}
         accessClose={false}
       /> */}
 
-      {isOpen && <ModalAvatarUpload isOpen={isOpen} onClose={onClose} />}
+			{isOpen && <ModalAvatarUpload isOpen={isOpen} onClose={onClose} />}
 
-      {children}
-    </>
-  );
+			{children}
+		</>
+	);
 };
 
 export default AuthProvider;
