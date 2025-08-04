@@ -11,10 +11,6 @@ export default function CabinetContent({
   titleRightElement,
   ...rest
 }) {
-  const imageSrc = useColorModeValue(
-    '/images/promo-modal/expansion/greenLights.svg',
-    '/images/promo-modal/expansion/yellowLights.svg'
-  );
   return (
     <>
       <Helmet>

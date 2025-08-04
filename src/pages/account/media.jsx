@@ -481,10 +481,10 @@ function Media() {
             <HStack>
               <Tab>{t('presentations')}</Tab>
               <Tab>{t('promo')}</Tab>
-              <Tab>{t('vebinars')}</Tab>
-              <Tab>{t('learnings')}</Tab>
+              <Tab>Meme</Tab>
+              {/* <Tab>{t('learnings')}</Tab> */}
               <Tab>{t('streams')}</Tab>
-              <Tab>{t('stories')}</Tab>
+              {/* <Tab>{t('stories')}</Tab> */}
             </HStack>
           </Box>
         </TabList>
@@ -499,15 +499,11 @@ function Media() {
           <TabPanel>
             <MediaGrid medias={webinars} />
           </TabPanel>
-          <TabPanel>
-            <MediaGrid medias={learnings} />
-          </TabPanel>
+          {/* <TabPanel><MediaGrid medias={learnings} /></TabPanel> */}
           <TabPanel>
             <MediaStreams data={streams} />
           </TabPanel>
-          <TabPanel>
-            <MediaGrid medias={stories} />
-          </TabPanel>
+          {/* <TabPanel><MediaGrid medias={stories} /></TabPanel> */}
         </TabPanels>
       </Tabs>
     </CabinetContent>

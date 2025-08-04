@@ -51,11 +51,11 @@ function MiniCards() {
       title: t('team-bonus-company'),
       value: formatCurrency(data?.profitFromBonuses),
     },
-    {
-      id: 9,
-      title: t('team-earn-all'),
-      value: formatCurrency(data?.totalProfit),
-    },
+    // {
+    //   id: 9,
+    //   title: t('team-earn-all'),
+    //   value: formatCurrency(data?.totalProfit),
+    // },
   ];
 
   if (isLoading) return <MiniCardsSkeleton />;

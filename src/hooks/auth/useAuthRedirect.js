@@ -1,4 +1,4 @@
-export const useAuthRedirect = (router) => {
+export const authRedirect = (router) => {
   if (router.query.redirect) {
     return router.push(router.query.redirect);
   }

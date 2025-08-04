@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
 		(async () => {
 			const accessToken = getAccessToken();
 			if (!accessToken) return router.push('/auth/login');
-			return router.push('/auth/login');
+
 			try {
 				const decoded = jwt.decode(accessToken);
 

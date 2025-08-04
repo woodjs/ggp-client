@@ -40,6 +40,9 @@ import { SearchIcon } from '@chakra-ui/icons';
 import { FiList } from 'react-icons/fi';
 import { TbTableFilled } from 'react-icons/tb';
 import { formatCurrency } from '@/shared/lib';
+import { WithConnectWallet } from '@/shared/hoc/with-connect-wallet';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
@@ -62,13 +65,19 @@ function MyFarm() {
     '/images/bg/profile/dark.png'
   );
 
+  const { connected } = useWallet();
+
   return (
     <CabinetContent maxW="8xl" w="full" bgImage={bgImage} title={t('title')}>
       {/* <Box mb="20px" maxW="200px">
         <Web3Button />
       </Box> */}
+      {connected && <WalletMultiButton />}
 
-      <NFTList />
+      {/* <NFTList /> */}
+      <Center>
+        <WithConnectWallet>Нет сминченных NFT</WithConnectWallet>
+      </Center>
 
       {/* <FarmData /> */}
     </CabinetContent>

@@ -65,7 +65,7 @@ function LinksCard() {
             <Text userSelect="none">{t('user-links-register')}</Text>
           </Box>
         </HStack>
-        <HStack
+        {/* <HStack
           cursor="pointer"
           _active={{ opacity: 0.5 }}
           onClick={onCopyBot}
@@ -76,7 +76,7 @@ function LinksCard() {
           <Box w="160px" maxW="200px">
             <Text userSelect="none">{t('user-links-bot')}</Text>
           </Box>
-        </HStack>
+        </HStack> */}
       </Stack>
     </Card>
   );

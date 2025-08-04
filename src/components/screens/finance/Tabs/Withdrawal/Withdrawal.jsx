@@ -1,113 +1,130 @@
 import { useTranslation } from 'next-i18next';
 import {
-  Box,
-  Button,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
-  HStack,
-  Input,
-  InputGroup,
-  InputRightElement,
-  NumberInput,
-  NumberInputField,
-  Select,
-  Stack,
+	Box,
+	Button,
+	FormControl,
+	FormErrorMessage,
+	FormHelperText,
+	FormLabel,
+	HStack,
+	Input,
+	InputGroup,
+	InputRightElement,
+	NumberInput,
+	NumberInputField,
+	Select,
+	Stack,
 } from '@chakra-ui/react';
 import { Card } from '@/components/Card';
 import { CurrencySelect } from '../CurrencySelect';
 
 function WithdrawalForm({
-  formik,
-  requisites,
-  totalAmount,
-  handleAmountChange,
-  handleMaxClick,
-  currency,
-  setCurrency,
-  defaultCommission,
+	formik,
+	requisites,
+	totalAmount,
+	handleAmountChange,
+	handleMaxClick,
+	currency,
+	setCurrency,
+	defaultCommission,
 }) {
-  const { t } = useTranslation('finance');
+	const { t } = useTranslation('finance');
 
-  return (
-    <Card p="30px">
-      <Stack spacing={6}>
-        <Box>
+	return (
+		<Card p="30px">
+			<Stack spacing={6}>
+				{/* <Box>
           <FormLabel fontWeight="bold">{t('select-wallet')}</FormLabel>
           <CurrencySelect currency={currency} setCurrency={setCurrency} />
-        </Box>
+        </Box> */}
 
-        <FormControl
-          isInvalid={formik.touched.amount && !!formik.errors.amount}
-        >
-          <FormLabel fontWeight="bold">{t('amount')}</FormLabel>
+				<FormControl
+					isInvalid={formik.touched.amount && !!formik.errors.amount}
+				>
+					<FormLabel fontWeight="bold">{t('amount')}</FormLabel>
 
-          <InputGroup size="md" w="full">
-            <NumberInput min={10} value={formik.values.amount} w="full">
-              <NumberInputField
-                name="amount"
-                onChange={(e) => {
-                  handleAmountChange(e.target.value);
-                  formik.handleChange(e);
-                }}
-              />
-              {/* <InputRightElement width="4.5rem">
+					<InputGroup size="md" w="full">
+						<NumberInput min={10} value={formik.values.amount} w="full">
+							<NumberInputField
+								name="amount"
+								onChange={(e) => {
+									handleAmountChange(e.target.value);
+									formik.handleChange(e);
+								}}
+							/>
+							{/* <InputRightElement width="4.5rem">
                 <Button h="1.75rem" size="md" onClick={handleMaxClick}>
                   Max
                 </Button>
               </InputRightElement> */}
-            </NumberInput>
-          </InputGroup>
+						</NumberInput>
+					</InputGroup>
 
-          <FormErrorMessage>
-            {t(formik.errors.amount, {
-              amount: 20,
-            })}
-          </FormErrorMessage>
-        </FormControl>
+					<FormErrorMessage>
+						{t(formik.errors.amount, {
+							amount: 20,
+						})}
+					</FormErrorMessage>
+				</FormControl>
 
-        <FormControl
-          isInvalid={formik.touched.requisiteId && !!formik.errors.requisiteId}
-        >
-          <FormLabel fontWeight="bold">{t('requisite-title')}</FormLabel>
+				<FormControl
+					isInvalid={formik.touched.amount && !!formik.errors.amount}
+				>
+					<FormLabel fontWeight="bold">Адрес кошелька</FormLabel>
 
-          <Select
-            name="requisiteId"
-            onChange={formik.handleChange}
-            value={formik.values.requisiteId}
-          >
-            <option value="">{t('requsite-select')}</option>
-            {requisites
-              ? requisites.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.name && `${item.name} - `}{' '}
-                    {`${item.value.slice(0, 7)}...`}
-                  </option>
-                ))
-              : null}
-          </Select>
-          <FormErrorMessage>{t(formik.errors.requisiteId)}</FormErrorMessage>
-        </FormControl>
+					<Input name="amount" />
 
-        <FormControl>
-          <FormLabel fontWeight="bold">{t('withdrawal-total')}</FormLabel>
+					<FormErrorMessage>
+						{t(formik.errors.amount, {
+							amount: 20,
+						})}
+					</FormErrorMessage>
+				</FormControl>
 
-          <Input isReadOnly isDisabled value={totalAmount} />
+				{/* <FormControl
+					isInvalid={formik.touched.requisiteId && !!formik.errors.requisiteId}
+				>
+					<FormLabel fontWeight="bold">{t('requisite-title')}</FormLabel>
 
-          <FormHelperText>
-            <HStack mt="7px" alignItems="center">
-              <FormHelperText mt="0">
-                {t('withdrawal.time')} {t('commission')}: {defaultCommission}%{' '}
-              </FormHelperText>
-            </HStack>
-          </FormHelperText>
-        </FormControl>
+					<Select
+						name="requisiteId"
+						onChange={formik.handleChange}
+						value={formik.values.requisiteId}
+					>
+						<option value="">{t('requsite-select')}</option>
+						{requisites
+							? requisites.map((item) => (
+									<option key={item.id} value={item.id}>
+										{item.name && `${item.name} - `}{' '}
+										{`${item.value.slice(0, 7)}...`}
+									</option>
+							  ))
+							: null}
+					</Select>
+					<FormErrorMessage>{t(formik.errors.requisiteId)}</FormErrorMessage>
+				</FormControl> */}
 
-        <Button onClick={formik.handleSubmit}>{t('btn-withdrawal')}</Button>
-      </Stack>
-    </Card>
-  );
+				<FormControl>
+					<FormLabel fontWeight="bold">{t('withdrawal-total')}</FormLabel>
+
+					<Input isReadOnly isDisabled value={totalAmount} />
+
+					<FormHelperText>
+						<HStack mt="7px" alignItems="center">
+							<FormHelperText mt="0">
+								{/* {t('withdrawal.time')} {t('commission')}: {defaultCommission}%{' '} */}
+								Зачисление средств происходит автоматически, время начисления
+								зависит от загрузки сети Solana. Минимальная сумма вывода 0.05
+								SOL
+							</FormHelperText>
+						</HStack>
+					</FormHelperText>
+				</FormControl>
+
+				<Button onClick={formik.handleSubmit}>{t('btn-withdrawal')}</Button>
+			</Stack>
+		</Card>
+	);
 }
 
 export default WithdrawalForm;

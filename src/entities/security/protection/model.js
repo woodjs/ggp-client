@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 
 export const useProtectionMethods = () =>
-  useQuery('protection-methods', () => protectedAPI.get('/protection/methods'));
+  useQuery('protection-methods', () => protectedAPI.get('/two-factor/protections'));
 
 export const useUpdateProtectionMethods = () => {
   const queryClient = useQueryClient();

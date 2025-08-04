@@ -23,7 +23,7 @@ import { useAuth } from '@/hooks/auth/useAuth';
 
 import Form from '../Form';
 import { loginSchema } from './login.schema';
-import CustomButton from '../buttons/WalletConnect/WalletConnect';
+// import CustomButton from '../buttons/WalletConnect/WalletConnect';
 
 export default function LoginForm({ children, ...rest }) {
   const { t } = useTranslation('auth');
@@ -121,12 +121,12 @@ export default function LoginForm({ children, ...rest }) {
         )}
       </Formik>
 
-      <HStack>
+      {/* <HStack>
         <Box flex="1 0 auto" h="1px" bg="brandGray.200" />
         <Text color="brandGray.200">{t('or')}</Text>
         <Box flex="1 0 auto" h="1px" bg="brandGray.200" />
       </HStack>
-      <CustomButton />
+      <CustomButton /> */}
       {/* <ThirdwebButton /> */}
 
       <Text textAlign="center">{t('no-account')}</Text>

@@ -1,0 +1,48 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier"
+  ],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    // "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "import/prefer-default-export": 0, // для public api
+    "react/jsx-props-no-spreading": 0
+    // "react/no-unknown-property": 0,
+    // "import/prefer-default-export": 0,
+    // "react-hooks/rules-of-hooks": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@/components", "./src/components"],
+          ["@/hooks", "./src/hooks"],
+          ["@/api", "./src/commons/api"],
+          ["@/services", "./src/commons/services"],
+          ["@/utils", "./src/commons/utils"],
+          ["@/providers", "./src/providers"],
+          ["@/shared", "./src/shared"],
+          ["@/entities", "./src/entities"],
+          ["@/features", "./src/features"],
+          ["@/widgets", "./src/widgets"]
+        ],
+        "extensions": [".js", ".jsx", "json"]
+      }
+    }
+  }
+}

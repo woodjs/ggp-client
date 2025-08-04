@@ -1,171 +1,162 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Box, Grid, GridItem, useColorModeValue } from '@chakra-ui/react';
+import {
+	Box,
+	Flex,
+	Grid,
+	GridItem,
+	Stack,
+	Text,
+	useColorModeValue,
+} from '@chakra-ui/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Chart from '@/components/screens/statistics/Chart/Chart';
 import { useTranslation } from 'next-i18next';
 import CabinetContent from '../../components/layout/Cabinet/CabinetContent';
 import {
-  CardAffilate,
-  CardAward,
-  CardInvest,
+	CardAffilate,
+	CardAward,
+	CardInvest,
 } from '../../components/screens/statistics';
+import { Card } from '@/shared/ui';
+import {
+	BarChart,
+	Bar,
+	XAxis,
+	YAxis,
+	Tooltip,
+	Legend,
+	CartesianGrid,
+} from 'recharts';
+
+const data = [{ name: 'Page A', uv: 400, pv: 2400, amt: 2400 }];
+
+const renderBarChart = (
+	<BarChart width={600} height={300} data={data}>
+		<XAxis dataKey="name" stroke="#FFDC3F" />
+		<YAxis />
+		<Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
+		<Legend
+			width={100}
+			wrapperStyle={{
+				top: 40,
+				right: 20,
+				// backgroundColor: '#f5f5f5',
+				// border: '1px solid #d5d5d5',
+				borderRadius: 3,
+				lineHeight: '40px',
+			}}
+		/>
+		<CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+		<Bar dataKey="uv" fill="#8884d8" barSize={30} />
+	</BarChart>
+);
 
 export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? 'en', [
-      'cabinet',
-      'statistics',
-      'global',
-      'promo-modal',
-    ])),
-  },
+	props: {
+		...(await serverSideTranslations(locale ?? 'en', [
+			'cabinet',
+			'statistics',
+			'global',
+			'promo-modal',
+		])),
+	},
 });
 
 export default function IndexPage() {
-  const { t } = useTranslation('cabinet');
+	const { t } = useTranslation('cabinet');
 
-  return (
-    <CabinetContent
-      bgImage={useColorModeValue(
-        '/images/bg/statistics/light.jpg',
-        '/images/bg/statistics/dark.jpg'
-      )}
-    >
-      <Box
-        w={{
-          '2xl': 'full',
-        }}
-      >
-        <Grid
-          alignItems="stretch"
-          gridTemplateAreas={{
-            base: `"invest"
+	return (
+		<CabinetContent
+			bgImage={useColorModeValue(
+				'/images/bg/statistics/light.jpg',
+				'/images/bg/statistics/dark.jpg'
+			)}
+		>
+			<Box
+				w={{
+					'2xl': 'full',
+				}}
+			>
+				<Text as="span" display="block" fontSize="25px" fontWeight={700}>
+					График урожаев
+				</Text>
+				<Card p="30px" maxW="fit-content" mt="20px">
+					<Flex gap="60px">
+						<Stack>
+							<Text fontWeight="bold" fontSize="45px" textAlign="center">
+								15
+							</Text>
+							<Text>Количество NFT</Text>
+						</Stack>
+						<Stack>
+							<Text fontWeight="bold" fontSize="45px" textAlign="center">
+								2.5
+							</Text>
+
+							<Text>Floor Price, SOL</Text>
+						</Stack>
+						<Stack>
+							<Text fontWeight="bold" fontSize="45px" textAlign="center">
+								0
+							</Text>
+							<Text>Урожаев собрано</Text>
+						</Stack>
+						<Stack>
+							<Text fontWeight="bold" fontSize="45px" textAlign="center">
+								3
+							</Text>
+							<Text>Урожаев осталось</Text>
+						</Stack>
+						<Stack>
+							<Text fontWeight="bold" fontSize="45px" textAlign="center">
+								60
+							</Text>
+							<Text>Полученный вес, г.</Text>
+						</Stack>
+					</Flex>
+				</Card>
+
+				<Text display="block" fontSize="25px" fontWeight={700} mt="46px">
+					Дата ближайшего урожая:{' '}
+					<Text as="span" color="brandYellow">
+						20.06.2026 г
+					</Text>
+				</Text>
+
+				<Card maxW="fit-content" mt="20px">
+					{renderBarChart}
+				</Card>
+
+				{/* <Grid
+					alignItems="stretch"
+					gridTemplateAreas={{
+						base: `"invest"
           "awards"
           "chart"
           "assets"`,
-            lg: `"invest awards"
+						lg: `"invest awards"
         "chart chart"
         "assets assets"`,
-          }}
-          gridTemplateColumns={{
-            base: '1fr',
-            lg: '1fr 0.8fr',
-            xl: '1fr 0.5fr',
-          }}
-          gap="20px"
-        >
-          <GridItem w="full" gridArea="invest">
-            <CardInvest />
-          </GridItem>
-          <GridItem position="relative" w="full" gridArea="awards">
-            <CardAward />
-          </GridItem>
-          <GridItem w="full" gridArea="chart">
-            <Chart />
-          </GridItem>
-        </Grid>
-      </Box>
-    </CabinetContent>
-    // <CabinetContent
-    //   bgImage={useColorModeValue(
-    //     '/images/bg/statistics/light.jpg',
-    //     '/images/bg/statistics/dark.jpg'
-    //   )}
-    // >
-    //   <Box
-    //     w={{
-    //       '2xl': 'full',
-    //     }}
-    //   >
-    //     <Grid
-    //       alignItems="stretch"
-    //       gridTemplateAreas={{
-    //         base: `"invest"
-    //         "affilate"
-    //         "awards"
-    //         "subscribe"
-    //         "chart"
-    //         "assets"`,
-    //         lg: `"invest awards"
-    //         "affilate subscribe"
-    //       "chart chart"
-    //       "assets assets"`,
-    //       }}
-    //       gridTemplateColumns={{
-    //         base: '1fr',
-    //         lg: '1fr 0.8fr',
-    //         xl: '1fr 0.5fr',
-    //       }}
-    //       gap="20px"
-    //     >
-    //       <GridItem w="full" gridArea="invest">
-    //         <CardInvest
-    //           isLoading={loaded}
-    //           data={{
-    //             balances: {
-    //               usd: 20,
-    //               ggt: 214,
-    //             },
-    //             totalDepositAmount: 12,
-    //             totalInvestAmount: 42,
-    //           }}
-    //         />
-    //       </GridItem>
-    //       <GridItem w="full" gridArea="awards">
-    //         <CardAward isLoading={loaded} />
-    //       </GridItem>
-    //       <GridItem w="full" gridArea="affilate">
-    //         <CardAffilate isLoading={loaded} />
-    //       </GridItem>
-    //       <GridItem w="full" gridArea="subscribe">
-    //         <CardSubscrie isLoading={loaded} />
-    //       </GridItem>
-    //       <GridItem w="full" gridArea="chart">
-    //         <Chart />
-    //       </GridItem>
-    //       {/* <GridItem overflow="hidden" gridArea="assets">
-    //         <Box>
-    //           <Swiper
-    //             watchSlidesProgress
-    //             className="mySwiper"
-    //             style={{
-    //               padding: '0 40px',
-    //               '--swiper-navigation-color': navColor,
-    //               '--swiper-navigation-size': '30px',
-    //             }}
-    //             navigation
-    //             slidesPerView={isLargeScreen ? 5 : slidesPerView}
-    //             spaceBetween={20}
-    //             modules={[Navigation]}
-    //           >
-    //             {assets.map((assetsItem) => (
-    //               <SwiperSlide>
-    //                 {({ isVisible }) => (
-    //                   <Box
-    //                     w="full"
-    //                     display="flex"
-    //                     justifyContent="center"
-    //                     key={assetsItem.id}
-    //                     opacity={isVisible ? 1 : 0}
-    //                     transitionDuration=".4s"
-    //                   >
-    //                     <CardNFT
-    //                       img={assetsItem.img}
-    //                       price={assetsItem.price}
-    //                       title={assetsItem.title}
-    //                       percentIncome={assetsItem.percentIncome}
-    //                       incomeRatio={assetsItem.incomeRatio}
-    //                     />
-    //                   </Box>
-    //                 )}
-    //               </SwiperSlide>
-    //             ))}
-    //           </Swiper>
-    //         </Box>
-    //       </GridItem> */}
-    //     </Grid>
-    //   </Box>
-    // </CabinetContent>
-  );
+					}}
+					gridTemplateColumns={{
+						base: '1fr',
+						lg: '1fr 0.8fr',
+						xl: '1fr 0.5fr',
+					}}
+					gap="20px"
+				>
+					<GridItem w="full" gridArea="invest">
+						<CardInvest />
+					</GridItem>
+					<GridItem position="relative" w="full" gridArea="awards">
+						<CardAward />
+					</GridItem>
+					<GridItem w="full" gridArea="chart">
+						<Chart />
+					</GridItem>
+				</Grid> */}
+			</Box>
+		</CabinetContent>
+	);
 }

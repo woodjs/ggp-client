@@ -33,7 +33,7 @@ import { useAuth } from '@/hooks/auth/useAuth';
 import LangaugeSelect from '@/components/layout/Cabinet/LangaugeSelect/LangaugeSelect';
 import Form from '../Form';
 import { registerSchema } from './register.schema';
-import WalletConnect from '../buttons/WalletConnect/WalletConnect';
+// import WalletConnect from '../buttons/WalletConnect/WalletConnect';
 
 /**
  * @typedef {Object} RegisterFormProps
@@ -216,12 +216,12 @@ export default function RegisterForm({ children, sponsorData, ...rest }) {
           )}
         </Formik>
 
-        <HStack>
+        {/* <HStack>
           <Box flex="1 0 auto" h="1px" bg="brandGray.200" />
           <Text color="brandGray.200">{t('or')}</Text>
           <Box flex="1 0 auto" h="1px" bg="brandGray.200" />
         </HStack>
-        <WalletConnect />
+        <WalletConnect /> */}
       </Form>
       <Box position="absolute" top="20px" right="20px">
         <LangaugeSelect />

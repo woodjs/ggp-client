@@ -22,6 +22,9 @@ import Trophy from '@/components/layout/Cabinet/Sidebar/icons/Trophy';
 import Marketing from '@/components/layout/Cabinet/Sidebar/icons/Marketing';
 import Leaders from '@/components/layout/Cabinet/Sidebar/icons/Leaders';
 import { i18n, useTranslation } from 'next-i18next';
+import { TbTruckDelivery } from 'react-icons/tb';
+import { FaThList } from 'react-icons/fa';
+import { IoCreateOutline } from 'react-icons/io5';
 import styles from './Sidebar.module.css';
 import CannabisIcon from './icons/Cannabis';
 import IncomeIcon from './icons/Income';
@@ -36,15 +39,28 @@ import Media from '@/components/layout/Cabinet/Sidebar/icons/Media';
 
 export default function Sidebar({ mobOpen, ...rest }) {
   const { t } = useTranslation('cabinet');
-  const imageSrc = useColorModeValue(
-    '/images/promo-modal/expansion/greenLights.svg',
-    '/images/promo-modal/expansion/yellowLights.svg'
-  );
+
   const LinkItems = [
     {
       name: t('menu-1'),
       icon: IncomeIcon,
       link: '/account/statistics',
+    },
+    {
+      name: 'Доставка',
+      icon: TbTruckDelivery,
+      submenu: [
+        {
+          name: 'Заказы',
+          link: '/account/order',
+          icon: FaThList,
+        },
+        {
+          name: 'Заказать',
+          link: '/account/order/create',
+          icon: IoCreateOutline,
+        },
+      ],
     },
     { name: t('menu-2'), icon: NewsIcon, link: '/account/news' },
     { name: t('menu-3'), icon: ShopIcon, link: '/account/store' },
@@ -95,31 +111,6 @@ export default function Sidebar({ mobOpen, ...rest }) {
 
   return (
     <Box pos="relative">
-      <Image
-        src={imageSrc}
-        width={300}
-        height={1300}
-        style={{
-          position: 'fixed',
-          zIndex: '-1',
-          left: '150px',
-          top: '100px',
-        }}
-      />
-      <Image
-        style={{
-          position: 'fixed',
-          zIndex: '-1',
-          transform: 'rotate(90deg)',
-          bottom: '-180px',
-          left: '150px',
-        }}
-        src="/images/promo-modal/expansion/pine4.png"
-        alt="pine"
-        width={400}
-        height={400}
-      />
-
       <Box
         transition=".3s"
         px="10px"

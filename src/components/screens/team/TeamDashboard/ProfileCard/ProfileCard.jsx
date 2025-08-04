@@ -117,7 +117,7 @@ function ProfileCard() {
               )}
             </HStack>
           </VStack>
-          {data?.socials?.chat && (
+          {/* {data?.socials?.chat && (
             <VStack spacing={0}>
               <Link target="_blank" href={data.socials.chat}>
                 <Text
@@ -130,7 +130,7 @@ function ProfileCard() {
                 </Text>
               </Link>
             </VStack>
-          )}
+          )} */}
         </VStack>
       </Stack>
     </Card>

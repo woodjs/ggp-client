@@ -1,6 +1,5 @@
 import { Center, useColorModeValue } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
@@ -34,10 +33,6 @@ export default function LoginPage() {
   const { t } = useTranslation('auth');
   const bg = useColorModeValue('brandGray.100', 'dark');
   const router = useRouter();
-  const imageSrc = useColorModeValue(
-    '/images/promo-modal/expansion/greenLights.svg',
-    '/images/promo-modal/expansion/yellowLights.svg'
-  );
 
   useEffect(() => {
     const { query } = router;
@@ -59,17 +54,6 @@ export default function LoginPage() {
         py={{ md: '100px', lg: 0 }}
         px="10px"
       >
-        <Image
-          src={imageSrc}
-          width={300}
-          height={1200}
-          style={{
-            position: 'absolute',
-            zIndex: '0',
-            right: '20%',
-          }}
-        />
-
         <LoginDesktopForm />
       </Center>
     </>

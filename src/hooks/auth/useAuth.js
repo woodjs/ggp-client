@@ -3,21 +3,21 @@ import { useMutation, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import { i18n } from 'next-i18next';
-import { useDisconnect } from 'wagmi';
+// import { useDisconnect } from 'wagmi';
 
 import { AuthService } from '@/services/auth';
-import { useAuthRedirect } from './useAuthRedirect';
+import { authRedirect } from './useAuthRedirect';
 
 export const useAuth = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { disconnect } = useDisconnect();
-  const login = () =>
+  // const { disconnect } = useDisconnect();
+  const useLogin = () =>
     useMutation('login', AuthService.login, {
       onSuccess: (res) => {
         toast.success(i18n.t('auth:success-login'));
         Cookies.set('accessToken', res?.accessToken);
-        useAuthRedirect(router);
+        authRedirect(router);
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'authorization',
@@ -29,12 +29,12 @@ export const useAuth = () => {
         toast.error(message);
       },
     });
-  const register = () =>
+  const useRegister = () =>
     useMutation('register', AuthService.register, {
       onSuccess: (res) => {
         toast.success(i18n.t('auth:success-register'));
         Cookies.set('accessToken', res?.accessToken);
-        useAuthRedirect(router);
+        authRedirect(router);
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'registration',
@@ -50,10 +50,10 @@ export const useAuth = () => {
   const logout = () => {
     queryClient.removeQueries();
     Cookies.remove('accessToken');
-    disconnect();
+    // disconnect();
     AuthService.logout();
     router.push('/auth/login');
   };
 
-  return { login, register, logout };
+  return { login: useLogin, register: useRegister, logout };
 };

@@ -95,13 +95,13 @@ function TeamTable() {
 
   return (
     <>
-      <TableFilters
+      {/* <TableFilters
         filters={filters}
         setFilters={setFilters}
         handleSubmit={handleSubmit}
         handleReset={handleReset}
         isDisabled={isLoading}
-      />
+      /> */}
       <Card overflowX="auto" rounded="2xl" mt="20px">
         <SimpleGrid
           minW="1100px"

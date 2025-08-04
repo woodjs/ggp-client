@@ -43,10 +43,6 @@ export const getServerSideProps = async ({ locale, req }) => {
 export default function RegisterPage({ sponsorData }) {
   const { t } = useTranslation('auth');
   const bg = useColorModeValue('brandGray.100', 'dark');
-  const imageSrc = useColorModeValue(
-    '/images/promo-modal/expansion/greenLights.svg',
-    '/images/promo-modal/expansion/yellowLights.svg'
-  );
 
   return (
     <>
@@ -76,16 +72,6 @@ export default function RegisterPage({ sponsorData }) {
         pos="relative"
         px="10px"
       >
-        <Image
-          src={imageSrc}
-          width={300}
-          height={1200}
-          style={{
-            position: 'absolute',
-            zIndex: '0',
-            right: '10%',
-          }}
-        />
         <HStack
           w="full"
           minH="100vh"
@@ -122,32 +108,7 @@ export default function RegisterPage({ sponsorData }) {
             />
           </Box>
 
-          {/* New Year */}
           <Box pos="relative" maxW="550px" w="full">
-            <Image
-              style={{
-                position: 'absolute',
-                zIndex: '-1',
-                right: '-150px',
-                top: '-100px',
-              }}
-              src="/images/promo-modal/expansion/pine2.png"
-              alt="pine"
-              width={270}
-              height={340}
-            />
-            <Image
-              style={{
-                position: 'absolute',
-                zIndex: '-1',
-                bottom: '-100px',
-                left: '-140px',
-              }}
-              src="/images/promo-modal/expansion/pine3.png"
-              alt="pine"
-              width={270}
-              height={340}
-            />
             <RegisterForm sponsorData={sponsorData} />
           </Box>
         </HStack>

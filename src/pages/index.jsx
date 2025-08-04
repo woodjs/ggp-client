@@ -1,6 +1,6 @@
 import { Roboto, Montserrat } from '@next/font/google';
 // import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { useInView } from 'react-intersection-observer';
 import Snowfall from 'react-snowfall';
@@ -46,26 +46,27 @@ const montserrat = Montserrat({
   subsets: ['latin'],
 });
 
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['landing'])),
-    },
-  };
-}
-// export async function getServerSideProps({ locale }) {
-//   // return {
-//   //   props: {
-//   //     ...(await serverSideTranslations(locale ?? 'en', ['landing'])),
-//   //   },
-//   // };
+// export async function getStaticProps({ locale }) {
 //   return {
-//     redirect: {
-//       destination: 'https://profitonweed.com',
-//       permanent: false,
+//     props: {
+//       ...(await serverSideTranslations(locale ?? 'en', ['landing'])),
 //     },
 //   };
 // }
+export async function getServerSideProps({ locale }) {
+  // return {
+  //   props: {
+  //     ...(await serverSideTranslations(locale ?? 'en', ['landing'])),
+  //   },
+  // };
+
+  return {
+    redirect: {
+      destination: '/auth/login',
+      permanent: false,
+    },
+  };
+}
 
 export default function IndexPage() {
   const [isOpen, setIsOpen] = useState(false);

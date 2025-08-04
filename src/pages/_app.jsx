@@ -3,20 +3,22 @@ import { DefaultSeo } from 'next-seo';
 import { appWithTranslation } from 'next-i18next';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import {
-  EthereumClient,
-  w3mConnectors,
-  w3mProvider,
-} from '@web3modal/ethereum';
-import { Web3Modal } from '@web3modal/react';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
+// import {
+//   EthereumClient,
+//   w3mConnectors,
+//   w3mProvider,
+// } from '@web3modal/ethereum';
+// import { Web3Modal } from '@web3modal/react';
+// import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+// import { mainnet } from 'wagmi/chains';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '@solana/wallet-adapter-react-ui/styles.css';
 
 import ChakraProvider from '../app/providers/Chakra.provider';
 import AuthProvider from '../app/providers/Auth.provider';
+import { WalletConnectProvider } from '../app/providers/Wallet.provider';
 
 // UI
 import Cabinet from '../components/layout/Cabinet/Cabinet';
@@ -33,17 +35,18 @@ const queryClient = new QueryClient({
 
 // const chains = [arbitrum, mainnet, polygon, goerli];
 // const chains = [goerli];
-const chains = [mainnet];
+// -------
+// const chains = [mainnet];
 
-const projectId = '6c20c28f61e190e58efeee6bb3a0ca91';
+// const projectId = '6c20c28f61e190e58efeee6bb3a0ca91';
 
-const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors: w3mConnectors({ projectId, chains }),
-  publicClient,
-});
-const ethereumClient = new EthereumClient(wagmiConfig, chains);
+// const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
+// const wagmiConfig = createConfig({
+//   autoConnect: true,
+//   connectors: w3mConnectors({ projectId, chains }),
+//   publicClient,
+// });
+// const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 function MyApp({ Component, pageProps, cookies }) {
   const router = useRouter();
@@ -78,11 +81,13 @@ function MyApp({ Component, pageProps, cookies }) {
           --graytext: #f2f2f2;
         }
       `}</style>
-      <DefaultSeo title="POW" />
+      <DefaultSeo title="GGP" />
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <ChakraProvider cookies={cookies}>
-            <WagmiConfig config={wagmiConfig}>
+            {/* <WagmiConfig config={wagmiConfig}>
+             */}
+            <WalletConnectProvider>
               <ProgressBar />
               {
                 // eslint-disable-next-line no-nested-ternary
@@ -98,13 +103,15 @@ function MyApp({ Component, pageProps, cookies }) {
                 )
               }
               <ToastContainer theme="colored" limit={5} />
-            </WagmiConfig>
+            </WalletConnectProvider>
+            {/* 
+						</WagmiConfig> */}
           </ChakraProvider>
         </Hydrate>
 
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-      <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+      {/* <Web3Modal projectId={projectId} ethereumClient={ethereumClient} /> */}
     </>
   );
 }

@@ -154,30 +154,6 @@ export default function LoginDesktopForm({ ...rest }) {
             bottom="-60px"
           />
         </Box>
-        <Image
-          style={{
-            position: 'absolute',
-            zIndex: '-1',
-            right: '-150px',
-            top: '-100px',
-          }}
-          src="/images/promo-modal/expansion/pine2.png"
-          alt="pine"
-          width={270}
-          height={340}
-        />
-        <Image
-          style={{
-            position: 'absolute',
-            zIndex: '-1',
-            bottom: '-100px',
-            left: '-140px',
-          }}
-          src="/images/promo-modal/expansion/pine3.png"
-          alt="pine"
-          width={270}
-          height={340}
-        />
       </LoginForm>
       <Box position="absolute" top="20px" right="20px">
         <LangaugeSelect />
