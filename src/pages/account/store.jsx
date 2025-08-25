@@ -7,29 +7,45 @@ import { CollectionNFTList } from '@/widgets/collection-nft';
 import CollectionTimer from '@/widgets/collection-nft/ui/CollectionTimer';
 import { GradeList } from '@/widgets/grade-list';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { useRouter } from 'next/router';
 
-export const getStaticProps = async ({ locale }) => ({
-	props: {
-		...(await serverSideTranslations(locale ?? 'en', [
-			'cabinet',
-			'store',
-			'global',
-		])),
-	},
+// export const getStaticProps = async ({ locale }) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale ?? 'en', [
+//       'cabinet',
+//       'store',
+//       'global',
+//     ])),
+//   },
+// });
+
+export const getServerSideProps = async ({ locale }) => ({
+  redirect: {
+    destination: '/account/pre-sale',
+    permanent: false,
+  },
+  props: {
+    ...(await serverSideTranslations(locale ?? 'en', [
+      'cabinet',
+      'store',
+      'global',
+    ])),
+  },
 });
 
 export default function StorePage() {
-	const { t } = useTranslation('store');
+  const { t } = useTranslation('store');
+  const router = useRouter();
 
-	return (
-		<CabinetContent
-			bgImage={useColorModeValue(
-				'/images/bg/store/light.png',
-				'/images/bg/store/dark.png'
-			)}
-			title={t('title')}
-		>
-			{/* <Box
+  return (
+    <CabinetContent
+      bgImage={useColorModeValue(
+        '/images/bg/store/light.png',
+        '/images/bg/store/dark.png'
+      )}
+      title={t('title')}
+    >
+      {/* <Box
 				display="flex"
 				flexDir="column"
 				alignSelf="center"
@@ -38,11 +54,11 @@ export default function StorePage() {
 			>
 				<CollectionTimer />
 			</Box> */}
-			<WalletMultiButton />
-			<Center w="full">
-				<GradeList />
-				{/* <CollectionNFTList /> */}
-			</Center>
-		</CabinetContent>
-	);
+      <WalletMultiButton />
+      <Center w="full">
+        <GradeList />
+        {/* <CollectionNFTList /> */}
+      </Center>
+    </CabinetContent>
+  );
 }

@@ -21,7 +21,7 @@ import TeamMembers from '@/components/layout/Cabinet/Sidebar/icons/TeamMembers';
 import Trophy from '@/components/layout/Cabinet/Sidebar/icons/Trophy';
 import Marketing from '@/components/layout/Cabinet/Sidebar/icons/Marketing';
 import Leaders from '@/components/layout/Cabinet/Sidebar/icons/Leaders';
-import { i18n, useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { FaThList } from 'react-icons/fa';
 import { IoCreateOutline } from 'react-icons/io5';
@@ -41,31 +41,13 @@ export default function Sidebar({ mobOpen, ...rest }) {
   const { t } = useTranslation('cabinet');
 
   const LinkItems = [
+    { name: t('menu-3'), icon: ShopIcon, link: '/account/store' },
+    { name: t('menu-4'), icon: CannabisIcon, link: '/account/myfarm' },
     {
       name: t('menu-1'),
       icon: IncomeIcon,
       link: '/account/statistics',
     },
-    {
-      name: 'Доставка',
-      icon: TbTruckDelivery,
-      submenu: [
-        {
-          name: 'Заказы',
-          link: '/account/order',
-          icon: FaThList,
-        },
-        {
-          name: 'Заказать',
-          link: '/account/order/create',
-          icon: IoCreateOutline,
-        },
-      ],
-    },
-    { name: t('menu-2'), icon: NewsIcon, link: '/account/news' },
-    { name: t('menu-3'), icon: ShopIcon, link: '/account/store' },
-    { name: t('menu-4'), icon: CannabisIcon, link: '/account/myfarm' },
-    { name: t('menu-8'), icon: Media, link: '/account/media' },
     {
       name: t('menu-5'),
       icon: TeamIcon,
@@ -103,10 +85,27 @@ export default function Sidebar({ mobOpen, ...rest }) {
         },
       ],
     },
-    // { name: t('menu-7'), icon: Leaders, link: '/account/leaders' },
+    {
+      name: 'Доставка',
+      icon: TbTruckDelivery,
+      submenu: [
+        {
+          name: 'Заказы',
+          link: '/account/order',
+          icon: FaThList,
+        },
+        {
+          name: 'Заказать',
+          link: '/account/order/create',
+          icon: IoCreateOutline,
+        },
+      ],
+    },
+    { name: t('menu-8'), icon: Media, link: '/account/media' },
+    { name: t('menu-2'), icon: NewsIcon, link: '/account/news' },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  // const isDark = colorMode === 'dark';
   const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: true });
 
   return (
@@ -185,11 +184,8 @@ export default function Sidebar({ mobOpen, ...rest }) {
             />
           ))}
         </VStack>
-        <label htmlFor="theme-toggle-sidebar">
+        {/* <label htmlFor="theme-toggle-sidebar">
           <VStack>
-            {/* <Button onClick={toggleColorMode} size="md"> */}
-            {/* {colorMode === 'light' ? <FaMoon /> : <BsSun />} */}
-            {/* </Button> */}
             <Box boxSize="16px">
               <Box position="absolute">
                 <ScaleFade
@@ -198,15 +194,10 @@ export default function Sidebar({ mobOpen, ...rest }) {
                     scale: isDark ? 1 : 0.4,
                     opacity: isDark ? 1 : 0,
                   }}
-                  // initialScale={0.4}
                   in={isDark}
                 >
                   <Box>
-                    <Icon
-                      // transition="0.4s"
-                      // transform={`rotate(${isDark ? 180 : 0}deg)`}
-                      as={BsSun}
-                    />
+                    <Icon as={BsSun} />
                   </Box>
                 </ScaleFade>
               </Box>
@@ -217,21 +208,14 @@ export default function Sidebar({ mobOpen, ...rest }) {
                     scale: !isDark ? 1 : 0.4,
                     opacity: !isDark ? 1 : 0,
                   }}
-                  // initialScale={0.4}
                   in={!isDark}
                 >
                   <Box>
-                    <Icon
-                      color="darkLight"
-                      // transition="0.4s"
-                      // transform={`rotate(${isDark ? 180 : 0}deg)`}
-                      as={FaMoon}
-                    />
+                    <Icon color="darkLight" as={FaMoon} />
                   </Box>
                 </ScaleFade>
               </Box>
             </Box>
-            {/* <Box>{colorMode === 'light' ? <BsSun /> : <FaMoon />}</Box> */}
             <Switch
               id="theme-toggle-sidebar"
               size="md"
@@ -244,7 +228,7 @@ export default function Sidebar({ mobOpen, ...rest }) {
               }}
             />
           </VStack>
-        </label>
+        </label> */}
         <Box
           m="auto"
           w="fit-content"

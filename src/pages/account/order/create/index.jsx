@@ -2,6 +2,7 @@ import CabinetContent from '@/components/layout/Cabinet/CabinetContent';
 import { Card, CardList } from '@/shared/ui';
 import { BasketOrder } from '@/widgets/order/BasketOrder';
 import { CheckoutForm } from '@/widgets/order/CheckoutForm';
+import { OrderCreateCard } from '@/widgets/order/order-card-create';
 import {
   Box,
   Button,
@@ -108,27 +109,8 @@ export default function CreateOrderPage() {
     count: steps.length,
   });
 
-  const handleAddToCart = (product) => {
-    setCart((prev) => {
-      const existing = prev.find((p) => p.name === product.name);
-      if (existing) {
-        return prev.map((p) =>
-          p.name === product.name ? { ...p, grams: p.grams + product.grams } : p
-        );
-      }
-      return [...prev, product];
-    });
-  };
-
-  const handleRemove = (name) => {
-    setCart((prev) => prev.filter((item) => item.name !== name));
-  };
-
   return (
-    <CabinetContent
-      bgImage="/images/bg/profile/dark.png"
-      title={'Create Order'}
-    >
+    <CabinetContent bgImage="/images/bg/profile/dark.png" title="Create Order">
       <Stepper index={activeStep} mb="50px" colorScheme="teal">
         {steps.map((step, index) => (
           <Step key={index}>
@@ -152,7 +134,7 @@ export default function CreateOrderPage() {
       {activeStep === 0 && (
         <Flex gap="20px" align="flex-start">
           {/* Продукты */}
-          <CardList>
+          {/* <CardList>
             <ProductCard
               color="#54A495"
               image="https://html.merku.love/herbalist/img/index/hero02.webp"
@@ -160,11 +142,10 @@ export default function CreateOrderPage() {
                 handleAddToCart({ name: 'Royal Strawberry', grams })
               }
             />
-            {/* другие карточки */}
-          </CardList>
+          </CardList> */}
 
           {/* Корзина */}
-          <Box w="250px" bg="gray.800" p="4" rounded="md" color="white">
+          {/* <Box w="250px" bg="gray.800" p="4" rounded="md" color="white">
             <Text fontWeight="bold" mb="2">
               🛒 Ваша корзина
             </Text>
@@ -191,7 +172,9 @@ export default function CreateOrderPage() {
                 </Button>
               </VStack>
             )}
-          </Box>
+          </Box> */}
+
+          <OrderCreateCard onNextStep={goToNext} />
         </Flex>
       )}
       {activeStep === 1 && (
