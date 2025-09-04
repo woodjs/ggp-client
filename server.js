@@ -3,4 +3,4 @@ require('dotenv').config({
 });
 const cli = require('next/dist/cli/next-start');
 
-cli.nextStart({ '--port': Number(process.env.PORT_SERVER) || 3000, _: [] });
+cli.nextStart({ '--port': Number(process.env.PORT) || 3000, _: [] });
