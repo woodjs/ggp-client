@@ -68,26 +68,24 @@ export const getStaticProps = async ({ locale }) => ({
 // }
 
 export default function Marketing() {
+  const { t } = useTranslation();
   return (
     <CabinetContent>
       <Stack spacing="30px">
         <Text fontWeight="bold" fontSize="36px">
-          Green Grow Paradise платит за рекомендации!
+          {t('marketing:referral_announcement')}
         </Text>
         <Text fontWeight="600" fontSize="24px">
-          Зарабатывай на пресейле и первичных продажах NFT вместе с
-          двухуровневой партнёрской программой Green Grow Paradise.
+          {t('marketing:referral_description')}
         </Text>
         <Text fontWeight="600" fontSize="24px">
-          Поделись с другом своей партнёрской ссылкой из раздела “Команда” и
-          получи кэшбек 10% от его покупок NFT. А также +3% от покупок его
-          друзей.
+          {t('marketing:referral_instructions')}
         </Text>
       </Stack>
       <Center>
         <Image
           mt="60px"
-          src="/images/marketing/referral.png"
+          src={t('marketing:image')}
           maxW="691px"
           w="full"
           objectFit="contain"

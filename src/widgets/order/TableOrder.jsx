@@ -11,6 +11,7 @@ import {
   Collapse,
   IconButton,
   useDisclosure,
+  Center,
 } from '@chakra-ui/react';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
@@ -61,13 +62,14 @@ export function OrderTable({ orders }) {
   return (
     <Card>
       <Box overflowX="auto">
-        <Table variant="simple">
+        <Center>No data</Center>
+        {/* <Table variant="simple">
           <Thead>
             <Tr>
               <Th />
-              <Th>ID заказа</Th>
-              <Th>Статус</Th>
-              <Th>Дата</Th>
+              <Th>ID </Th>
+              <Th>Status</Th>
+              <Th>Date</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -75,7 +77,7 @@ export function OrderTable({ orders }) {
               <OrderRow key={order.id} order={order} />
             ))}
           </Tbody>
-        </Table>
+        </Table> */}
       </Box>
     </Card>
   );

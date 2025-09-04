@@ -11,7 +11,7 @@ function ProfileHero() {
           pos="absolute"
           left={0}
           top={0}
-          src="https://static.gg-pharm.com/account/cover.jpg"
+          src="https://cdn.pixabay.com/photo/2020/10/22/10/42/hemp-5675705_1280.jpg"
           alt="cover"
           w="full"
           objectFit="cover"

@@ -71,11 +71,11 @@ function ProfileSidebar() {
             icon={BiDevices}
             text="Устройства"
           /> */}
-          <ProfileSidebarItem
+          {/* <ProfileSidebarItem
             onClick={() => scrollToId('notifications')}
             icon={MdNotificationsNone}
             text={t('sidebar-notifications')}
-          />
+          /> */}
           {/* <ProfileSidebarItem
             onClick={() => scrollToId('sponsor')}
             icon={RiParentLine}

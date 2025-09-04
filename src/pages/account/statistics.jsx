@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Box, Flex, Stack, Text, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  Flex,
+  Stack,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useTranslation } from 'next-i18next';
@@ -19,12 +26,12 @@ import CabinetContent from '../../components/layout/Cabinet/CabinetContent';
 import { Card } from '@/shared/ui';
 
 const data = [
-  { date: '20.08.2025', value: 180 },
-  { date: '20.01.2026', value: 400 },
-  { date: '20.06.2026', value: 400 },
-  { date: '20.11.2026', value: 400 },
-  { date: '20.04.2027', value: 400 },
-  { date: '20.09.2027', value: 400 },
+  // { date: '20.08.2025', value: 180 },
+  // { date: '20.01.2026', value: 400 },
+  // { date: '20.06.2026', value: 400 },
+  // { date: '20.11.2026', value: 400 },
+  // { date: '20.04.2027', value: 400 },
+  // { date: '20.09.2027', value: 400 },
 ];
 
 function HarvestChart() {
@@ -111,20 +118,20 @@ export default function IndexPage() {
     <CabinetContent bgImage={bgImage}>
       <Box w={{ base: '100%', '2xl': 'full' }} p="20px">
         <Text as="span" display="block" fontSize="25px" fontWeight={700}>
-          График урожаев
+          {t('statistics')}
         </Text>
 
         <Card p="30px" maxW="100%" mt="20px">
-          <Flex gap={{ base: '20px', md: '60px' }} wrap="wrap">
+          <Flex gap={{ base: '20px', md: '60px' }} wrap="wrap" justify="center">
             <Stack>
               <Text fontWeight="bold" fontSize="45px" textAlign="center">
-                15
+                0
               </Text>
-              <Text>Количество NFT</Text>
+              <Text>{t('nft_count')}</Text>
             </Stack>
             <Stack>
               <Text fontWeight="bold" fontSize="45px" textAlign="center">
-                2.5
+                0
               </Text>
               <Text>Floor Price, SOL</Text>
             </Stack>
@@ -132,32 +139,33 @@ export default function IndexPage() {
               <Text fontWeight="bold" fontSize="45px" textAlign="center">
                 0
               </Text>
-              <Text>Урожаев собрано</Text>
+              <Text>{t('harvests_collected')}</Text>
             </Stack>
             <Stack>
               <Text fontWeight="bold" fontSize="45px" textAlign="center">
-                3
+                0
               </Text>
-              <Text>Урожаев осталось</Text>
+              <Text>{t('harvests_remaining')}</Text>
             </Stack>
             <Stack>
               <Text fontWeight="bold" fontSize="45px" textAlign="center">
-                60
+                0
               </Text>
-              <Text>Полученный вес, г.</Text>
+              <Text>{t('weight_obtained_g')}</Text>
             </Stack>
           </Flex>
         </Card>
 
         <Text display="block" fontSize="25px" fontWeight={700} mt="46px">
-          Дата ближайшего урожая:{' '}
+          {/* Дата ближайшего урожая:{' '}
           <Text as="span" color="brandYellow">
             20.06.2026 г
-          </Text>
+          </Text> */}
+          {t('harvest_chart')}
         </Text>
 
         <Card maxW="100%" mt="20px" p="20px">
-          <HarvestChart />
+          {data.length ? <HarvestChart /> : <Center>{t('no_data')}</Center>}
         </Card>
       </Box>
     </CabinetContent>

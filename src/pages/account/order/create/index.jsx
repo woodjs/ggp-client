@@ -30,6 +30,7 @@ import {
 } from '@chakra-ui/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function ProductCard({ color, image, onAdd }) {
   const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
@@ -94,16 +95,16 @@ function ProductCard({ color, image, onAdd }) {
   );
 }
 
-const steps = [
-  { title: 'Шаг 1', description: 'Выбор заказа' },
-  { title: 'Шаг 2', description: 'Оформление' },
-];
-
 export default function CreateOrderPage() {
   const [cart, setCart] = useState([
-    { name: 'Royal Strawberry', grams: 1 },
-    { name: 'Royal Strawberry', grams: 10 },
+    // { name: 'Royal Strawberry', grams: 1 },
+    // { name: 'Royal Strawberry', grams: 10 },
   ]);
+  const { t } = useTranslation('cabinet');
+  const steps = [
+    { title: `${t('step')} 1`, description: t('order_selection') },
+    { title: `${t('step')} 2`, description: t('checkout') },
+  ];
   const { activeStep, goToNext } = useSteps({
     index: 0,
     count: steps.length,

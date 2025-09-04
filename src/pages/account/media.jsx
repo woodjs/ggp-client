@@ -479,9 +479,9 @@ function Media() {
             overflow="auto"
           >
             <HStack>
-              <Tab>{t('presentations')}</Tab>
+              {/* <Tab>{t('presentations')}</Tab>
               <Tab>{t('promo')}</Tab>
-              <Tab>Meme</Tab>
+              <Tab>Meme</Tab> */}
               {/* <Tab>{t('learnings')}</Tab> */}
               <Tab>{t('streams')}</Tab>
               {/* <Tab>{t('stories')}</Tab> */}
@@ -490,7 +490,7 @@ function Media() {
         </TabList>
 
         <TabPanels>
-          <TabPanel>
+          {/* <TabPanel>
             <MediaGrid medias={presentations} />
           </TabPanel>
           <TabPanel>
@@ -498,7 +498,7 @@ function Media() {
           </TabPanel>
           <TabPanel>
             <MediaGrid medias={webinars} />
-          </TabPanel>
+          </TabPanel> */}
           {/* <TabPanel><MediaGrid medias={learnings} /></TabPanel> */}
           <TabPanel>
             <MediaStreams data={streams} />

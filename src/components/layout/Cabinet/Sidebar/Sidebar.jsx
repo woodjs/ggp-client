@@ -86,23 +86,23 @@ export default function Sidebar({ mobOpen, ...rest }) {
       ],
     },
     {
-      name: 'Доставка',
+      name: t('menu-9'),
       icon: TbTruckDelivery,
       submenu: [
         {
-          name: 'Заказы',
+          name: t('menu-10'),
           link: '/account/order',
           icon: FaThList,
         },
         {
-          name: 'Заказать',
+          name: t('menu-11'),
           link: '/account/order/create',
           icon: IoCreateOutline,
         },
       ],
     },
     { name: t('menu-8'), icon: Media, link: '/account/media' },
-    { name: t('menu-2'), icon: NewsIcon, link: '/account/news' },
+    // { name: t('menu-2'), icon: NewsIcon, link: '/account/news' },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   // const isDark = colorMode === 'dark';

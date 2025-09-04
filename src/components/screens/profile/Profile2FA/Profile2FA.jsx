@@ -114,7 +114,7 @@ function Profile2FA({
             </Grid>
           </Grid>
 
-          <Grid
+          {/* <Grid
             w="full"
             columnGap="60px"
             rowGap={{ base: '20px', md: '0px' }}
@@ -140,7 +140,7 @@ function Profile2FA({
                 'Включено'
               )}
             </Grid>
-          </Grid>
+          </Grid> */}
         </VStack>
       </ProfileCardBody>
     </ProfileCard>

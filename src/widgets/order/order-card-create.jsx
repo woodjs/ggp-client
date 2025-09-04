@@ -11,11 +11,13 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { DownloadIcon, CheckIcon, DeleteIcon, AddIcon } from '@chakra-ui/icons';
+import { useTranslation } from 'react-i18next';
 
 export function OrderCreateCard({ onNextStep }) {
+  const { t } = useTranslation('cabinet');
   const [rows, setRows] = useState([
-    { sort: 'Bubblegum sherbet', available: 1000, order: 10 },
-    { sort: 'Bubblegum sherbet', available: 1000, order: 20 },
+    // { sort: 'Bubblegum sherbet', available: 1000, order: 10 },
+    // { sort: 'Bubblegum sherbet', available: 1000, order: 20 },
   ]);
 
   const addRow = () => {
@@ -44,9 +46,9 @@ export function OrderCreateCard({ onNextStep }) {
         mb={4}
         alignItems="center"
       >
-        <Text>Сорт</Text>
-        <Text>Доступно, г</Text>
-        <Text>Заказ, г</Text>
+        <Text>{t('variety')}</Text>
+        <Text>{t('available_g')}</Text>
+        <Text>{t('order_g')}</Text>
         <Box />
         <Box />
       </Grid>
@@ -92,8 +94,8 @@ export function OrderCreateCard({ onNextStep }) {
                   )
                 }
               >
-                <option style={{ color: 'black' }}>Bubblegum sherbet</option>
-                <option style={{ color: 'black' }}>Another sort</option>
+                {/* <option style={{ color: 'black' }}>Bubblegum sherbet</option>
+                <option style={{ color: 'black' }}>Another sort</option> */}
               </Select>
               {filled && (
                 <IconButton
@@ -163,7 +165,7 @@ export function OrderCreateCard({ onNextStep }) {
 
       {/* Итоговый вес */}
       <Text mt={4} fontWeight="bold" fontSize="lg" color="#FFD700">
-        Итоговый вес: {totalWeight} г
+        {t('total_weight', { totalWeight })}
       </Text>
 
       {/* Кнопки */}
@@ -177,7 +179,7 @@ export function OrderCreateCard({ onNextStep }) {
           _hover={{ bg: 'rgba(255,215,0,0.1)' }}
           onClick={addRow}
         >
-          Добавить сорт
+          {t('add_variety')}
         </Button>
 
         <Button
@@ -186,8 +188,9 @@ export function OrderCreateCard({ onNextStep }) {
           color="black"
           _hover={{ bg: '#e6c200' }}
           onClick={onNextStep}
+          isDisabled
         >
-          Подтвердить перечень сортов
+          {t('confirm_varieties')}
         </Button>
       </Flex>
     </Card>

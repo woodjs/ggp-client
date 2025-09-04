@@ -76,7 +76,7 @@ function MyFarm() {
 
       {/* <NFTList /> */}
       <Center>
-        <WithConnectWallet>Нет сминченных NFT</WithConnectWallet>
+        <WithConnectWallet>{t('no_minted_nfts')}</WithConnectWallet>
       </Center>
 
       {/* <FarmData /> */}

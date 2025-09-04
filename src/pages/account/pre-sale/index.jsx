@@ -14,11 +14,13 @@ import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
+import { useTranslation } from 'react-i18next';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export default function PagePreSale() {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -55,12 +57,12 @@ export default function PagePreSale() {
   return (
     <CabinetContent>
       <Text fontWeight="bold" fontSize="36px" mb={6}>
-        Pre-Sale
+        Store
       </Text>
 
       <Center mb={6}>
         <Text fontSize="24ppx" fontWeight="bold">
-          Анонс pre-sale состоится 10.10.2026
+          {t('cabinet:presale_announcement')}
         </Text>
       </Center>
 
@@ -72,7 +74,7 @@ export default function PagePreSale() {
                 {String(timeLeft.days).padStart(2, '0')}
               </Text>
               <Text fontSize="18px" color="white" fontWeight="bold">
-                дни
+                {t('cabinet:day')}
               </Text>
             </VStack>
             <VStack spacing={2}>
@@ -80,7 +82,7 @@ export default function PagePreSale() {
                 {String(timeLeft.hours).padStart(2, '0')}
               </Text>
               <Text fontSize="18px" color="white" fontWeight="bold">
-                часы
+                {t('cabinet:hour')}
               </Text>
             </VStack>
             <VStack spacing={2}>
@@ -88,7 +90,7 @@ export default function PagePreSale() {
                 {String(timeLeft.minutes).padStart(2, '0')}
               </Text>
               <Text fontSize="18px" color="white" fontWeight="bold">
-                минуты
+                {t('cabinet:minute')}
               </Text>
             </VStack>
             <VStack spacing={2}>
@@ -96,15 +98,13 @@ export default function PagePreSale() {
                 {String(timeLeft.seconds).padStart(2, '0')}
               </Text>
               <Text fontSize="18px" color="white" fontWeight="bold">
-                секунды
+                {t('cabinet:second')}
               </Text>
             </VStack>
           </HStack>
           <Stack mt="30px">
             <Text fontWeight="bold" textAlign="center">
-              Одно или несколько NFT этих сортов из нашей коллекции станут
-              вашими после покупки:Одно или несколько NFT этих сортов из нашей
-              коллекции станут вашими после покупки:
+              {t('cabinet:nft-purchase-note')}
             </Text>
 
             <Grid
