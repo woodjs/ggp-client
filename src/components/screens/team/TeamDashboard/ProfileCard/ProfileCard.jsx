@@ -75,9 +75,9 @@ function ProfileCard() {
         <VStack h="full" alignItems="center" spacing="20px">
           <VStack>
             <Text fontWeight="bold">{data.login}</Text>
-            <Text textAlign="center" color="brandGray.200">
+            {/* <Text textAlign="center" color="brandGray.200">
               {data.rankName}
-            </Text>
+            </Text> */}
             <HStack pt="10px" spacing="20px">
               {data?.socials?.website && (
                 <Link
