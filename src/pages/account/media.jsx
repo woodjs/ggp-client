@@ -11,6 +11,7 @@ import {
   HStack,
   Image,
   Box,
+  Text,
 } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -37,7 +38,7 @@ const getDefaultIndex = (tab) => {
 function Media() {
   const { t } = useTranslation('media');
   const router = useRouter();
-  const { tab } = router.query;
+  const { tab } = router.query ?? 'streams';
   const promo = [
     {
       preview: '/images/media/logo_profitonweed_black.jpeg',
@@ -501,7 +502,10 @@ function Media() {
           </TabPanel> */}
           {/* <TabPanel><MediaGrid medias={learnings} /></TabPanel> */}
           <TabPanel>
-            <MediaStreams data={streams} />
+            <Text as="h1" fontSize="32px" fontWeight="bold">
+              Soon
+            </Text>
+            {/* <MediaStreams data={streams} /> */}
           </TabPanel>
           {/* <TabPanel><MediaGrid medias={stories} /></TabPanel> */}
         </TabPanels>

@@ -21,7 +21,7 @@ import { useRouter } from 'next/router';
 
 export const getServerSideProps = async ({ locale }) => ({
   redirect: {
-    destination: `${locale ?? 'en'}/account/pre-sale`,
+    destination: `/${locale ?? 'en'}/account/pre-sale`,
     permanent: false,
   },
   props: {

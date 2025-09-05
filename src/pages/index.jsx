@@ -62,7 +62,7 @@ export async function getServerSideProps({ locale }) {
 
   return {
     redirect: {
-      destination: `${locale ?? 'en'}/auth/login`,
+      destination: `/${locale ?? 'en'}/auth/login`,
       permanent: false,
     },
   };
