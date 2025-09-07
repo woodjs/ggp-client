@@ -14,4 +14,8 @@ export const registerSchema = yup.object().shape({
     .min(6, 'errors:password-min-length')
     .max(32, 'errors:password-max-length')
     .required('errors:input-required'),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'errors:passwords-must-match')
+    .required('errors:input-required'),
 });

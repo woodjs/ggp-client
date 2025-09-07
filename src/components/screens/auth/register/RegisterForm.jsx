@@ -111,6 +111,7 @@ export default function RegisterForm({ children, sponsorData, ...rest }) {
             login: '',
             email: '',
             password: '',
+            confirmPassword: '',
           }}
           validationSchema={registerSchema}
           onSubmit={handleСlick}
@@ -177,6 +178,34 @@ export default function RegisterForm({ children, sponsorData, ...rest }) {
                 {({ meta, field }) => (
                   <FormControl isInvalid={!!meta.error && meta.touched}>
                     <FormLabel>{t('password')}</FormLabel>
+                    <InputGroup>
+                      <InputLeftElement pointerEvents="none">
+                        <Icon
+                          as={AiOutlineLock}
+                          color="brandGray.200"
+                          w="20px"
+                          h="20px"
+                        />
+                      </InputLeftElement>
+                      <Input
+                        {...field}
+                        type="password"
+                        fontSize="14px"
+                        placeholder={t('password-placeholder')}
+                        border="1px"
+                        borderColor="brandGray.200"
+                        focusBorderColor="brandGreen.400"
+                      />
+                    </InputGroup>
+                    <FormErrorMessage>{t(meta.error)}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="confirmPassword">
+                {({ field, meta }) => (
+                  <FormControl isInvalid={!!meta.error && meta.touched}>
+                    <FormLabel>{t('confirm-password')}</FormLabel>
                     <InputGroup>
                       <InputLeftElement pointerEvents="none">
                         <Icon
