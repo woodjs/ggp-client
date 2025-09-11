@@ -228,7 +228,7 @@ export default function TransactionFilters({
         justifyContent="center"
       >
         <Button onClick={onOpen} isDisabled={isDisabled}>
-          Фильтры
+          Filters
         </Button>
 
         {csvData.length ? (
