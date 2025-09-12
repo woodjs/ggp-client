@@ -1,0 +1,20 @@
+{
+  "h1": "ตัวอย่างง่ายๆ",
+  "change-locale": "เปลี่ยนภาษาเป็น \"{{changeTo}}\"",
+  "to-second-page": "ไปที่หน้าที่สอง",
+  "error-with-status": "เกิดข้อผิดพลาด {{statusCode}} บนเซิร์ฟเวอร์",
+  "error-without-status": "เกิดข้อผิดพลาดบนเซิร์ฟเวอร์",
+  "title": "หน้าแรก | next-i18next",
+  "blog": {
+    "optimized": {
+      "question": "คุณอยากปลดปล่อยพลังพิเศษเพื่อให้การแปลทั้งหมดถูกปรับแต่งอย่างเหมาะสมหรือไม่?",
+      "answer": "ถ้าใช่ คุณสามารถดูได้ที่ <1>บล็อกโพสต์นี้</1>.",
+      "link": "https://locize.com/blog/next-i18next/"
+    },
+    "ssg": {
+      "question": "คุณต้องการใช้ SSG (next export) หรือไม่?",
+      "answer": "ถ้าใช่ คุณสามารถดูได้ที่ <1>บล็อกโพสต์นี้</1>.",
+      "link": "https://locize.com/blog/next-i18n-static/"
+    }
+  }
+}

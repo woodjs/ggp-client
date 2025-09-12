@@ -1,0 +1,16 @@
+{
+  "amount-negative": "จำนวนต้องมากกว่า {{amount}}",
+  "cyrillic-and-space": "ชื่อผู้ใช้ต้องเป็นอักษรละตินและไม่มีเว้นวรรค",
+  "email-invalid": "อีเมลไม่ถูกต้อง",
+  "error-client": "ข้อผิดพลาดของลูกค้า",
+  "input-required": "กรุณากรอกข้อมูล",
+  "only-integer": "ช่องต้องมีเฉพาะจำนวนเต็ม",
+  "only-number": "ช่องต้องมีเฉพาะตัวเลข",
+  "password-max-length": "สูงสุด 32 ตัวอักษร",
+  "password-min-length": "อย่างน้อย 6 ตัวอักษร",
+  "password-not-equal": "รหัสผ่านไม่ตรงกัน",
+  "server-not-responsed": "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้",
+  "unauthorized": "ต้องเข้าสู่ระบบ",
+  "unknown-server": "ข้อผิดพลาดเซิร์ฟเวอร์ไม่ทราบ",
+  "passwords-must-match": "รหัสผ่านต้องตรงกัน"
+}

@@ -1,0 +1,16 @@
+{
+  "amount-negative": "Le montant doit être supérieur à {{amount}}",
+  "cyrillic-and-space": "Le login doit être en lettres latines sans espaces",
+  "email-invalid": "Email invalide",
+  "error-client": "Erreur client",
+  "input-required": "Veuillez remplir ce champ",
+  "only-integer": "Le champ doit contenir uniquement des nombres entiers",
+  "only-number": "Le champ doit contenir uniquement des nombres",
+  "password-max-length": "Max. 32 caractères",
+  "password-min-length": "Min. 6 caractères",
+  "password-not-equal": "Les mots de passe ne correspondent pas",
+  "server-not-responsed": "Impossible de se connecter au serveur",
+  "unauthorized": "Autorisation requise",
+  "unknown-server": "Erreur serveur inconnue",
+  "passwords-must-match": "Les mots de passe doivent correspondre"
+}

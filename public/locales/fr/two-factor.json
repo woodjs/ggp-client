@@ -1,0 +1,15 @@
+{
+  "btn-confirm": "Confirmer",
+  "btn-get-code": "Obtenir le code",
+  "email-subtitle": "Entrez le code reçu par email",
+  "ga-code": "Code de vérification",
+  "ga-copy-key": "Clé copiée",
+  "ga-desc": "Cette clé est le seul moyen de récupérer l'accès, conservez-la précieusement",
+  "ga-qrcode": "Scannez le QR code ou saisissez la clé manuellement",
+  "ga-subtitle": "Entrez le code depuis Google Authenticator",
+  "notify-code": "Recevoir un nouveau code dans {{seconds}}s",
+  "put-bot-code": "Entrez le code envoyé par le bot",
+  "success-code": "Code envoyé",
+  "turn-off-desc": "Désactiver l'authentification à deux facteurs (2FA) expose votre compte à un risque élevé d'accès non autorisé. Si vous décidez de désactiver la 2FA, nous vous recommandons de la réactiver dès que possible. Si une activité inhabituelle est détectée après la désactivation de la 2FA, vous ne pourrez pas retirer des fonds ni vendre des actifs sur la plateforme P2P pendant 24 heures.",
+  "turn-off-title": "Désactiver {{method}}"
+}

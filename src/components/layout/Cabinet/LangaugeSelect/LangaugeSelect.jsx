@@ -91,6 +91,34 @@ function LangaugeSelect() {
               >
                 <Image rounded="sm" maxW="25px" src="/images/landing/es.svg" />
               </Button>
+              <Button
+                variant={currentLanguage === 'fr' ? 'solid' : 'ghost'}
+                p="6px"
+                w="fit-content"
+                h="fit-content"
+                rounded="sm"
+                onClick={() => onLanguageChange('fr')}
+              >
+                <Image
+                  rounded="sm"
+                  maxW="25px"
+                  src="https://gg-paradise.com/images/flags/fr.png"
+                />
+              </Button>
+              <Button
+                variant={currentLanguage === 'th' ? 'solid' : 'ghost'}
+                p="6px"
+                w="fit-content"
+                h="fit-content"
+                rounded="sm"
+                onClick={() => onLanguageChange('th')}
+              >
+                <Image
+                  rounded="sm"
+                  maxW="25px"
+                  src="https://gg-paradise.com/images/flags/th.png"
+                />
+              </Button>
             </VStack>
           </PopoverBody>
         </PopoverContent>

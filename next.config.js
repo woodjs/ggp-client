@@ -3,7 +3,7 @@ const { i18n } = require('./next-i18next.config');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   i18n: {
-    locales: ['ru', 'en', 'es'],
+    locales: ['ru', 'en', 'es', 'fr', 'th'],
     defaultLocale: 'en',
   },
   // reactStrictMode: true,

@@ -1,0 +1,10 @@
+{
+  "currency-not-found": "ไม่พบสกุลเงิน",
+  "error-amount": "จำนวนต้องเป็นตัวเลข",
+  "error-currency": "กรุณาเลือกสกุลเงิน",
+  "not-enough-balance": "ยอดเงินคงเหลือไม่เพียงพอ",
+  "only-positive-amount": "จำนวนต้องไม่น้อยกว่า 1",
+  "transfer-error.min.money": "จำนวนเงินขั้นต่ำสำหรับการโอนคือ {{minAmount}}",
+  "transfer-forbidden-self-transfer": "คุณไม่สามารถโอนเงินให้ตัวเองได้",
+  "withdraw-requisite-number": "รหัสบัญชีต้องเป็นตัวเลข"
+}

@@ -1,0 +1,8 @@
+{
+  "confirmation-code-title": "Code de confirmation de l'opération",
+  "default-title": "Vous avez reçu un nouveau message",
+  "recovery-text": "Pour réinitialiser votre mot de passe, cliquez sur <a href='{{link}}'>ce lien</a>",
+  "recovery-time": "Vous avez déjà demandé la réinitialisation du mot de passe. Veuillez réessayer plus tard",
+  "recovery-title": "Réinitialisation du mot de passe",
+  "сonfirmation-code-text": "Code de confirmation de l'opération : {{code}}. Le code est valable pendant 10 minutes."
+}

@@ -1,0 +1,11 @@
+{
+  "leaderBonus": {
+    "modal": {
+      "days_one": "Jour",
+      "days_two": "Jours",
+      "days_many": "Jours",
+      "days_other": "Jours",
+      "days_zero": "Jours"
+    }
+  }
+}

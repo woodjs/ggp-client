@@ -1,0 +1,10 @@
+{
+  "currency-not-found": "Devise inconnue",
+  "error-amount": "Le montant doit être un nombre",
+  "error-currency": "Veuillez choisir une devise",
+  "not-enough-balance": "Solde insuffisant",
+  "only-positive-amount": "Le montant ne peut pas être inférieur à 1",
+  "transfer-error.min.money": "Le montant minimum pour un transfert est de {{minAmount}}",
+  "transfer-forbidden-self-transfer": "Vous ne pouvez pas effectuer un transfert vers vous-même",
+  "withdraw-requisite-number": "L’identifiant du compte doit être un nombre"
+}
