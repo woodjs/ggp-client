@@ -1,5 +1,7 @@
 import CabinetContent from '@/components/layout/Cabinet/CabinetContent';
 import { OrderTable } from '@/widgets/order/TableOrder';
+import { useOrders } from '@/widgets/products/hooks/use-orders';
+import { Center, Spinner } from '@chakra-ui/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 // [
@@ -21,16 +23,41 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 //             items: [{ name: 'Blue Dream', grams: 3 }],
 //           },
 //         ]
+
 export default function Orders() {
+  const { data: orders, isLoading, isError } = useOrders();
+
+  if (isLoading) {
+    return (
+      <CabinetContent>
+        <Center p={10}>
+          <Spinner size="xl" />
+        </Center>
+      </CabinetContent>
+    );
+  }
+
+  if (isError) {
+    return (
+      <CabinetContent>
+        <Center p={10}>Ошибка загрузки заказов</Center>
+      </CabinetContent>
+    );
+  }
+
   return (
     <CabinetContent>
-      <OrderTable orders={[]} />
+      <OrderTable orders={orders} />
     </CabinetContent>
   );
 }
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? 'en', ['cabinet', 'global'])),
+    ...(await serverSideTranslations(locale ?? 'en', [
+      'cabinet',
+      'global',
+      'orders',
+    ])),
   },
 });

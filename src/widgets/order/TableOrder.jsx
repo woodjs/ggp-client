@@ -1,5 +1,6 @@
-import { Card } from '@/shared/ui';
+import { useTranslation } from 'next-i18next';
 import {
+  Card,
   Box,
   Table,
   Thead,
@@ -10,12 +11,13 @@ import {
   Text,
   Collapse,
   IconButton,
-  useDisclosure,
   Center,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { MdExpandMore, MdExpandLess } from 'react-icons/md';
+import { MdExpandLess, MdExpandMore } from 'react-icons/md';
 
 function OrderRow({ order }) {
+  const { t } = useTranslation('orders');
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -27,28 +29,35 @@ function OrderRow({ order }) {
             size="sm"
             variant="ghost"
             onClick={onToggle}
-            aria-label="Toggle details"
+            aria-label={t('toggle_details')}
           />
         </Td>
         <Td>{order.id}</Td>
         <Td>{order.status}</Td>
-        <Td>{order.date}</Td>
+        <Td>{new Date(order.createdAt).toLocaleString()}</Td>
       </Tr>
 
       <Tr>
         <Td colSpan={4} p={0}>
           <Collapse in={isOpen} animateOpacity>
-            <Box p="4" rounded="md">
-              <Text fontWeight="semibold" mb="2">
-                Содержимое заказа:
+            <Box p={4} rounded="md">
+              <Text fontWeight="semibold" mb={2}>
+                {t('order_contents')}
               </Text>
-              {order.items.map((item, index) => (
-                <Box key={index} fontSize="sm" mb="1">
-                  {item.name} — {item.grams}г
-                </Box>
-              ))}
-              <Text mt="2" fontSize="sm" color="gray.500">
-                Адрес доставки: {order.address}
+              {order.items.length ? (
+                order.items.map((item) => (
+                  <Box key={item.id} fontSize="sm" mb={1}>
+                    {item.product?.name || 'Продукт удален'} — {item.grams} г
+                  </Box>
+                ))
+              ) : (
+                <Text fontSize="sm" color="gray.500">
+                  {t('no_items')}
+                </Text>
+              )}
+              <Text mt={2} fontSize="sm">
+                {t('delivery_address')}: {order.address}, {order.postalCode},{' '}
+                {order.fullname}, {order.phone}
               </Text>
             </Box>
           </Collapse>
@@ -59,17 +68,26 @@ function OrderRow({ order }) {
 }
 
 export function OrderTable({ orders }) {
+  const { t } = useTranslation('order');
+
+  if (!orders || !orders.length) {
+    return (
+      <Card p={4}>
+        <Center>{t('no_orders')}</Center>
+      </Card>
+    );
+  }
+
   return (
-    <Card>
+    <Card p={4}>
       <Box overflowX="auto">
-        <Center>No data</Center>
-        {/* <Table variant="simple">
+        <Table variant="simple" size="sm">
           <Thead>
             <Tr>
               <Th />
-              <Th>ID </Th>
-              <Th>Status</Th>
-              <Th>Date</Th>
+              <Th>{t('id')}</Th>
+              <Th>{t('status')}</Th>
+              <Th>{t('created_at')}</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -77,7 +95,7 @@ export function OrderTable({ orders }) {
               <OrderRow key={order.id} order={order} />
             ))}
           </Tbody>
-        </Table> */}
+        </Table>
       </Box>
     </Card>
   );

@@ -60,15 +60,5 @@
   "profile": "Perfil",
   "timer-header.finished": "¡Platinum NFT con PAGOS MENSUALES están disponibles! Cantidad limitada",
   "statistics": "Estadísticas",
-  "no_data": "Sin datos",
-  "step": "Paso",
-  "checkout": "Finalizar pedido",
-  "order_selection": "Selección de pedido",
-  "variety": "Variedad",
-  "confirm_varieties": "Confirmar lista de variedades",
-
-  "add_variety": "Agregar variedad",
-  "total_weight": "Peso total: {{totalWeight}} g",
-  "order_g": "Pedido, g",
-  "available_g": "Disponible, g"
+  "no_data": "Sin datos"
 }

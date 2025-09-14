@@ -60,14 +60,5 @@
   "timer-header.finished": "Official NFT sales have started! Go to the Store",
   "harvest_chart": "Harvest Chart",
   "statistics": "Statistics",
-  "no_data": "No data",
-  "step": "Step",
-  "checkout": "Checkout",
-  "order_selection": "Order Selection",
-  "variety": "Variety",
-  "confirm_varieties": "Confirm Varieties List",
-  "add_variety": "Add Variety",
-  "total_weight": "Total Weight: {{totalWeight}} g",
-  "order_g": "Order, g",
-  "available_g": "Available, g"
+  "no_data": "No data"
 }

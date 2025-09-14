@@ -9,42 +9,89 @@ import {
   Text,
   Box,
   Button,
+  Skeleton,
+  useToast,
+  InputGroup,
+  InputRightAddon,
 } from '@chakra-ui/react';
 import { DownloadIcon, CheckIcon, DeleteIcon, AddIcon } from '@chakra-ui/icons';
 import { useTranslation } from 'react-i18next';
+import { useProducts } from '@/widgets/products/hooks/use-products';
+import { useBalance } from '@/hooks/user/useBalance';
 
 export function OrderCreateCard({ onNextStep }) {
-  const { t } = useTranslation('cabinet');
-  const [rows, setRows] = useState([
-    // { sort: 'Bubblegum sherbet', available: 1000, order: 10 },
-    // { sort: 'Bubblegum sherbet', available: 1000, order: 20 },
-  ]);
+  const { t } = useTranslation('orders');
+  const toast = useToast();
+  const { data: products, isLoading } = useProducts();
+  const { data: balance } = useBalance();
+  const [rows, setRows] = useState([]);
+  const [errors, setErrors] = useState({});
 
-  const addRow = () => {
-    setRows([...rows, { sort: '', available: 1000, order: '' }]);
-  };
+  console.log(t('phone_label'));
+
+  const addRow = () => setRows([...rows, { productId: '', order: '' }]);
 
   const deleteRow = (index) => {
     setRows(rows.filter((_, i) => i !== index));
+    setErrors((prev) => {
+      const newErr = { ...prev };
+      delete newErr[index];
+      return newErr;
+    });
   };
 
-  const isFilled = (row) =>
-    row.sort && row.available !== '' && row.order !== '';
+  const isFilled = (row) => row.productId && row.order !== '';
+
+  // Баланс минус уже введённые заказы (кроме текущей строки)
+  const getRemainingBalance = (currentIndex) => {
+    const used = rows.reduce(
+      (sum, r, i) =>
+        i !== currentIndex ? sum + (parseFloat(r.order) || 0) : sum,
+      0
+    );
+    return Math.max((balance?.grams || 0) - used, 0);
+  };
+
+  const handleOrderChange = (index, value) => {
+    let numValue = parseFloat(value);
+    if (isNaN(numValue)) numValue = 0;
+
+    const remaining = getRemainingBalance(index);
+    if (numValue > remaining) {
+      numValue = remaining;
+      toast({
+        title: t('insufficient_balance'),
+        description: t('you_only_have', { grams: remaining }),
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+      setErrors((prev) => ({ ...prev, [index]: true }));
+    } else {
+      setErrors((prev) => ({ ...prev, [index]: false }));
+    }
+
+    setRows((prev) =>
+      prev.map((r, i) => (i === index ? { ...r, order: numValue } : r))
+    );
+  };
 
   const totalWeight = useMemo(
     () => rows.reduce((sum, row) => sum + (parseFloat(row.order) || 0), 0),
     [rows]
   );
 
+  if (!products) return 'Loading...';
+
+  const selectedProductIds = rows.map((r) => r.productId).filter(Boolean);
+
   return (
     <Card bg="#2B3143" p={6} borderRadius="xl" color="white">
-      {/* Заголовки */}
       <Grid
         templateColumns="2fr 1fr 1fr 40px 40px"
         gap={4}
         fontWeight="bold"
         mb={4}
-        alignItems="center"
       >
         <Text>{t('variety')}</Text>
         <Text>{t('available_g')}</Text>
@@ -53,9 +100,15 @@ export function OrderCreateCard({ onNextStep }) {
         <Box />
       </Grid>
 
-      {/* Строки */}
-      {rows.map((item, i) => {
-        const filled = isFilled(item);
+      {rows.map((row, i) => {
+        const filled = isFilled(row);
+        const product = products.find((p) => p.id === row.productId);
+        const remaining = getRemainingBalance(i);
+
+        const availableOptions = products.filter(
+          (p) => !selectedProductIds.includes(p.id) || p.id === row.productId
+        );
+
         return (
           <Grid
             key={i}
@@ -64,79 +117,81 @@ export function OrderCreateCard({ onNextStep }) {
             mb={4}
             alignItems="center"
           >
-            {/* Сорт */}
             <Flex
               border={filled ? '1px solid #FFD700' : 'none'}
               borderRadius="md"
               align="center"
               paddingLeft={filled ? '1rem' : 0}
             >
-              <Select
-                variant={filled ? 'unstyled' : 'outline'}
-                // px={2}
-                // paddingInlineStart={0}
-                // paddingInlineEnd={0}
-                w="full"
-                boxSizing="border-box"
-                placeholder="Выберите сорт"
-                color="white"
-                value={item.sort}
-                // sx={{
-                //   '.chakra-select__wrapper': {
-                //     paddingInlineStart: 0,
-                //   },
-                // }}
-                onChange={(e) =>
-                  setRows((prev) =>
-                    prev.map((row, idx) =>
-                      idx === i ? { ...row, sort: e.target.value } : row
-                    )
-                  )
-                }
-              >
-                {/* <option style={{ color: 'black' }}>Bubblegum sherbet</option>
-                <option style={{ color: 'black' }}>Another sort</option> */}
-              </Select>
-              {filled && (
-                <IconButton
-                  icon={<DownloadIcon />}
-                  aria-label="Download"
-                  variant="ghost"
-                  color="#FFD700"
-                />
+              {isLoading ? (
+                <Skeleton height="40px" width="full" borderRadius="md" />
+              ) : (
+                <Select
+                  placeholder={t('select_placeholder')}
+                  color="white"
+                  value={row.productId}
+                  borderColor="transparent"
+                  _hover={{ borderColor: 'transparent' }}
+                  _focus={{ boxShadow: 'none', borderColor: 'transparent' }}
+                  bg="transparent"
+                  onChange={(e) => {
+                    setRows((prev) =>
+                      prev.map((r, idx) =>
+                        idx === i
+                          ? {
+                              ...r,
+                              productId: parseInt(e.target.value),
+                              order: '',
+                            }
+                          : r
+                      )
+                    );
+                  }}
+                >
+                  {availableOptions.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.name}
+                    </option>
+                  ))}
+                </Select>
               )}
             </Flex>
 
-            {/* Доступно — только чтение */}
             <Input
-              value={item.available}
+              value={product?.stockGrams || 0}
               isReadOnly
               border={filled ? '1px solid #FFD700' : 'none'}
               borderRadius="md"
               textAlign="center"
             />
 
-            {/* Заказ */}
-            <Box>
+            <InputGroup>
               <Input
-                value={item.order}
-                onChange={(e) =>
-                  setRows((prev) =>
-                    prev.map((row, idx) =>
-                      idx === i ? { ...row, order: e.target.value } : row
-                    )
-                  )
+                value={row.order}
+                type="number"
+                min={0}
+                max={remaining}
+                onChange={(e) => handleOrderChange(i, e.target.value)}
+                border={
+                  errors[i]
+                    ? '2px solid red'
+                    : filled
+                    ? '1px solid #FFD700'
+                    : 'none'
                 }
-                border={filled ? '1px solid #FFD700' : 'none'}
                 borderRadius="md"
                 textAlign="center"
-                mb={1}
                 placeholder={!filled ? '—' : ''}
               />
-            </Box>
+              <InputRightAddon
+                children={`${row.order || 0} / ${Math.min(
+                  product?.stockGrams || 0,
+                  remaining
+                )} g`}
+              />
+            </InputGroup>
 
-            {/* Удалить */}
-            {filled ? (
+            {filled && (
               <IconButton
                 icon={<DeleteIcon />}
                 aria-label="Delete"
@@ -144,31 +199,15 @@ export function OrderCreateCard({ onNextStep }) {
                 color="white"
                 onClick={() => deleteRow(i)}
               />
-            ) : (
-              <Box />
-            )}
-
-            {/* Готово */}
-            {filled ? (
-              <IconButton
-                icon={<CheckIcon />}
-                aria-label="Confirm"
-                variant="ghost"
-                color="#FFD700"
-              />
-            ) : (
-              <Box />
             )}
           </Grid>
         );
       })}
 
-      {/* Итоговый вес */}
       <Text mt={4} fontWeight="bold" fontSize="lg" color="#FFD700">
         {t('total_weight', { totalWeight })}
       </Text>
 
-      {/* Кнопки */}
       <Flex mt={4} gap={3}>
         <Button
           leftIcon={<AddIcon />}
@@ -187,8 +226,45 @@ export function OrderCreateCard({ onNextStep }) {
           bg="#FFD700"
           color="black"
           _hover={{ bg: '#e6c200' }}
-          onClick={onNextStep}
-          isDisabled
+          onClick={() => {
+            const newErrors = {};
+            let hasError = false;
+
+            rows.forEach((row, i) => {
+              const numValue = parseFloat(row.order) || 0;
+              if (
+                !row.productId ||
+                numValue <= 0 ||
+                numValue > getRemainingBalance(i) + numValue
+              ) {
+                newErrors[i] = true;
+                hasError = true;
+              }
+            });
+
+            setErrors(newErrors);
+
+            if (hasError) {
+              toast({
+                title: t('validation_error'),
+                description: t('check_your_orders'),
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+              });
+              return;
+            }
+
+            // Собираем payload и передаем родителю
+            const payload = rows.map((r) => ({
+              productId: r.productId,
+              grams: parseFloat(r.order),
+            }));
+            console.log('Order payload:', payload);
+
+            onNextStep(payload);
+          }}
+          isDisabled={rows.length === 0}
         >
           {t('confirm_varieties')}
         </Button>

@@ -60,15 +60,5 @@
   "timer-header.finished": "Les NFT Platinum avec PAIEMENTS MENSUELS sont disponibles ! Quantité limitée",
   "harvest_chart": "Graphique des récoltes",
   "statistics": "Statistiques",
-  "no_data": "Pas de données",
-  "step": "Étape",
-  "checkout": "Paiement",
-  "order_selection": "Sélection de commande",
-
-  "variety": "Variété",
-  "confirm_varieties": "Confirmer la liste des variétés",
-  "add_variety": "Ajouter une variété",
-  "total_weight": "Poids total : {{totalWeight}} g",
-  "order_g": "Commande, g",
-  "available_g": "Disponible, g"
+  "no_data": "Pas de données"
 }

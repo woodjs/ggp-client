@@ -60,15 +60,5 @@
   "timer-header.finished": "มี Platinum NFT พร้อมการจ่ายเงินรายเดือน! จำนวนจำกัด",
   "harvest_chart": "กราฟการเก็บเกี่ยว",
   "statistics": "สถิติ",
-  "no_data": "ไม่มีข้อมูล",
-  "step": "ขั้นตอน",
-  "checkout": "การชำระเงิน",
-  "order_selection": "การเลือกคำสั่งซื้อ",
-
-  "variety": "สายพันธุ์",
-  "confirm_varieties": "ยืนยันรายชื่อสายพันธุ์",
-  "add_variety": "เพิ่มสายพันธุ์",
-  "total_weight": "น้ำหนักรวม: {{totalWeight}} ก.",
-  "order_g": "คำสั่งซื้อ, ก.",
-  "available_g": "มีอยู่, ก."
+  "no_data": "ไม่มีข้อมูล"
 }

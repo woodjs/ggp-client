@@ -23,11 +23,11 @@ export default function Balances() {
     >
       <Card px="26px" py="23px" h="159px" flex={1}>
         <Text fontSize="2xl">SOL</Text>
-        <Text fontSize="32px">{data?.usd || 0}</Text>
+        <Text fontSize="32px">{data?.sol || 0}</Text>
       </Card>
       <Card px="26px" py="23px" h="159px" flex={1}>
         <Text fontSize="2xl">{t('grams')}</Text>
-        <Text fontSize="32px">0g</Text>
+        <Text fontSize="32px">{data?.grams} g</Text>
       </Card>
     </Stack>
   );

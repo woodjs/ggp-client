@@ -60,15 +60,5 @@
   "timer-header.finished": "Доступны Platinum NFT c ЕЖЕМЕСЯЧНЫМИ ВЫПЛАТАМИ! Количество ограниченно",
   "harvest_chart": "График урожаев",
   "statistics": "Статистика",
-  "no_data": "Нет данных",
-  "step": "Шаг",
-  "checkout": "Оформление",
-  "order_selection": "Выбор заказа",
-
-  "variety": "Сорт",
-  "confirm_varieties": "Подтвердить перечень сортов",
-  "add_variety": "Добавить сорт",
-  "total_weight": "Итоговый вес: {{totalWeight}} г",
-  "order_g": "Заказ, г",
-  "available_g": "Доступно, г"
+  "no_data": "Нет данных"
 }
