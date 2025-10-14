@@ -15,6 +15,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import { useTranslation } from 'react-i18next';
+import PurchaseTest from '@/widgets/solana/purchase';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -28,7 +29,7 @@ export default function PagePreSale() {
     seconds: 0,
   });
 
-  const targetDate = dayjs.tz('2025-10-10T00:00:00', 'Asia/Bangkok');
+  const targetDate = dayjs.tz('2025-10-21T00:00:00', 'Asia/Bangkok');
 
   useEffect(() => {
     const updateTimer = () => {
@@ -65,6 +66,8 @@ export default function PagePreSale() {
           {t('cabinet:presale_announcement')}
         </Text>
       </Center>
+
+      {/* <PurchaseTest /> */}
 
       <Center>
         <Stack display="flex" justifyContent="center" alignItems="center">
