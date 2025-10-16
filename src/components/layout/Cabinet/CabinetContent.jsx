@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
-import { Box, HStack, useColorModeValue } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, HStack } from '@chakra-ui/react';
+
 import CabinetTitle from './Title';
 
 export default function CabinetContent({

@@ -15,27 +15,25 @@ import {
   Text,
 } from '@chakra-ui/react';
 // ICONS
-import { FaMoon } from 'react-icons/fa';
-import { BsCameraVideo, BsSun } from 'react-icons/bs';
+import { BsCameraVideo } from 'react-icons/bs';
 import TeamMembers from '@/components/layout/Cabinet/Sidebar/icons/TeamMembers';
-import Trophy from '@/components/layout/Cabinet/Sidebar/icons/Trophy';
 import Marketing from '@/components/layout/Cabinet/Sidebar/icons/Marketing';
-import Leaders from '@/components/layout/Cabinet/Sidebar/icons/Leaders';
 import { useTranslation } from 'next-i18next';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { FaThList } from 'react-icons/fa';
 import { IoCreateOutline } from 'react-icons/io5';
+import { LuMessageCircleMore } from 'react-icons/lu';
+import Media from '@/components/layout/Cabinet/Sidebar/icons/Media';
 import styles from './Sidebar.module.css';
+
 import CannabisIcon from './icons/Cannabis';
 import IncomeIcon from './icons/Income';
-import NewsIcon from './icons/News';
 import ShopIcon from './icons/Shop';
 import TeamIcon from './icons/Team';
 import MoneyIcon from './icons/Money';
 import NavItem from './NavItem';
 import OperationIcon from './icons/Operation';
 import TransactionsIcon from './icons/Transactions';
-import Media from '@/components/layout/Cabinet/Sidebar/icons/Media';
 
 export default function Sidebar({ mobOpen, ...rest }) {
   const { t } = useTranslation('cabinet');
@@ -102,6 +100,11 @@ export default function Sidebar({ mobOpen, ...rest }) {
       ],
     },
     { name: t('menu-8'), icon: Media, link: '/account/media' },
+    {
+      name: 'Dao',
+      icon: LuMessageCircleMore,
+      link: '/account/dao',
+    },
     // { name: t('menu-2'), icon: NewsIcon, link: '/account/news' },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
