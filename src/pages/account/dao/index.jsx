@@ -1,21 +1,35 @@
 import CabinetContent from '@/components/layout/Cabinet/CabinetContent';
-import { Box, Button, Flex, Image, Text, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'react-i18next';
 
 export default function Daopage() {
   const { t } = useTranslation('dao');
+
   return (
-    <CabinetContent title="Dao">
-      <VStack>
+    <CabinetContent title="DAO">
+      <HStack
+        borderRadius="16px"
+        spacing={{ base: 4, md: 8 }}
+        align="center"
+        flexDirection={{ base: 'column', md: 'row' }}
+        bg="darkLight"
+      >
+        {/* Левая колонка: картинка с заголовком */}
         <Box
           pos="relative"
-          w="full"
-          h="400px"
-          overflow="hidden"
+          w={{ base: 'full', md: '50%' }}
           borderRadius="16px"
+          overflow="hidden"
         >
-          {/* Изображение */}
           <Image
             src="https://gg-paradise.com/images/farm/header.jpg"
             alt="DAO"
@@ -23,7 +37,6 @@ export default function Daopage() {
             h="full"
             objectFit="cover"
           />
-
           {/* Затемнение */}
           <Box
             pos="absolute"
@@ -33,8 +46,7 @@ export default function Daopage() {
             h="full"
             bg="rgba(0, 0, 0, 0.5)"
           />
-
-          {/* Текст по центру */}
+          {/* Заголовок */}
           <VStack
             pos="absolute"
             top="0"
@@ -44,6 +56,7 @@ export default function Daopage() {
             justify="center"
             align="center"
             zIndex="1"
+            padding="16px"
           >
             <Text
               color="white"
@@ -53,35 +66,60 @@ export default function Daopage() {
             >
               {t('question')}
             </Text>
-            <VStack mt="20px" spacing="10px">
-              <Button
-                bg="#5165F6"
-                maxW="196px"
-                w="full"
-                onClick={() => {
-                  window.open('https://discord.gg/7Z57DXH3', '_blank');
-                }}
-              >
-                <Flex gap="10px" alignItems="center">
-                  <Image
-                    src="https://img.icons8.com/?size=100&id=30888&format=png&color=FFFFFF"
-                    w="20px"
-                  />
-                  <Text color="white" fontWeight="bold">
-                    {t('discuss')}
-                  </Text>
-                </Flex>
-              </Button>
-              <Button maxW="196px" w="full" isDisabled>
-                {t('vote')}
-              </Button>
-            </VStack>
           </VStack>
         </Box>
-      </VStack>
+
+        {/* Правая колонка: текст + кнопки */}
+        <VStack
+          w={{ base: 'full', md: '50%' }}
+          align="start"
+          spacing={6}
+          mt={{ base: 4, md: 0 }}
+          padding="16px"
+        >
+          <Text
+            fontSize={{ base: 'md', md: 'lg' }}
+            fontWeight="bold"
+            textAlign="center"
+          >
+            {t('dao_text')}
+          </Text>
+
+          <HStack
+            spacing={4}
+            flexDirection={{ base: 'column', md: 'row' }}
+            alignItems="center"
+            justifyContent="center"
+            w="full"
+          >
+            <Button
+              bg="#5165F6"
+              w="196px"
+              onClick={() =>
+                window.open('https://discord.gg/7Z57DXH3', '_blank')
+              }
+            >
+              <Flex gap="10px" alignItems="center" justify="center">
+                <Image
+                  src="https://img.icons8.com/?size=100&id=30888&format=png&color=FFFFFF"
+                  w="20px"
+                />
+                <Text color="white" fontWeight="bold">
+                  {t('discuss')}
+                </Text>
+              </Flex>
+            </Button>
+
+            <Button w="196px" isDisabled>
+              {t('vote')}
+            </Button>
+          </HStack>
+        </VStack>
+      </HStack>
     </CabinetContent>
   );
 }
+
 export const getStaticProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'en', [

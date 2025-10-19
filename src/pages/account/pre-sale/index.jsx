@@ -1,5 +1,6 @@
 import CabinetContent from '@/components/layout/Cabinet/CabinetContent';
 import {
+  Button,
   Center,
   Grid,
   GridItem,
@@ -16,6 +17,7 @@ import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import { useTranslation } from 'react-i18next';
 import PurchaseTest from '@/widgets/solana/purchase';
+import { toast } from 'react-toastify';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -56,7 +58,7 @@ export default function PagePreSale() {
   }, []);
 
   return (
-    <CabinetContent>
+    <CabinetContent bgColor="#000">
       <Text fontWeight="bold" fontSize="36px" mb={6}>
         Store
       </Text>
@@ -68,7 +70,21 @@ export default function PagePreSale() {
       </Center>
 
       {/* <PurchaseTest /> */}
-
+      <Center mt={10}>
+        <video
+          src="https://static.gg-paradise.com/soon.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            width: '100%',
+            maxWidth: '800px',
+            height: '400px',
+            borderRadius: '10px',
+          }}
+        />
+      </Center>
       <Center>
         <Stack display="flex" justifyContent="center" alignItems="center">
           <HStack spacing={8}>
@@ -105,7 +121,16 @@ export default function PagePreSale() {
               </Text>
             </VStack>
           </HStack>
-          <Stack mt="30px">
+          <Stack alignItems="center" justify="center" mt="80px">
+            <Button
+              maxW="240px"
+              onClick={() => toast.warn(t('cabinet:wallet_not_ready'))}
+            >
+              {t('cabinet:check_wallet')}
+            </Button>
+            <Text fontWeight="bold">{t('cabinet:presale_whitelist_only')}</Text>
+          </Stack>
+          {/* <Stack mt="30px">
             <Text fontWeight="bold" textAlign="center">
               {t('cabinet:nft-purchase-note')}
             </Text>
@@ -127,7 +152,7 @@ export default function PagePreSale() {
                 </GridItem>
               ))}
             </Grid>
-          </Stack>
+          </Stack> */}
         </Stack>
       </Center>
     </CabinetContent>

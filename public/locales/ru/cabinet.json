@@ -60,5 +60,8 @@
   "timer-header.finished": "Доступны Platinum NFT c ЕЖЕМЕСЯЧНЫМИ ВЫПЛАТАМИ! Количество ограниченно",
   "harvest_chart": "График урожаев",
   "statistics": "Статистика",
-  "no_data": "Нет данных"
+  "no_data": "Нет данных",
+  "wallet_not_ready": "Подключение кошелька временно недоступно. Мы уведомим участников White List, когда оно будет готово.",
+  "presale_whitelist_only": "Участие в pre-sale доступно только для пользователей из White List",
+  "check_wallet": "Проверить кошелек"
 }

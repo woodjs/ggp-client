@@ -60,5 +60,8 @@
   "timer-header.finished": "Les NFT Platinum avec PAIEMENTS MENSUELS sont disponibles ! Quantité limitée",
   "harvest_chart": "Graphique des récoltes",
   "statistics": "Statistiques",
-  "no_data": "Pas de données"
+  "no_data": "Pas de données",
+  "wallet_not_ready": "La connexion au portefeuille est temporairement indisponible. Nous informerons les participants de la White List lorsqu'elle sera prête.",
+  "presale_whitelist_only": "La participation à la pré-vente est réservée aux utilisateurs de la White List",
+  "check_wallet": "Vérifier le portefeuille"
 }

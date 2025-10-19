@@ -60,5 +60,8 @@
   "profile": "Perfil",
   "timer-header.finished": "¡Platinum NFT con PAGOS MENSUALES están disponibles! Cantidad limitada",
   "statistics": "Estadísticas",
-  "no_data": "Sin datos"
+  "no_data": "Sin datos",
+  "wallet_not_ready": "La conexión de la cartera no está disponible temporalmente. Notificaremos a los participantes de la White List cuando esté lista.",
+  "presale_whitelist_only": "La participación en la preventa solo está disponible para usuarios de la White List",
+  "check_wallet": "Verificar cartera"
 }

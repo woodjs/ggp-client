@@ -60,5 +60,8 @@
   "timer-header.finished": "มี Platinum NFT พร้อมการจ่ายเงินรายเดือน! จำนวนจำกัด",
   "harvest_chart": "กราฟการเก็บเกี่ยว",
   "statistics": "สถิติ",
-  "no_data": "ไม่มีข้อมูล"
+  "no_data": "ไม่มีข้อมูล",
+  "wallet_not_ready": "การเชื่อมต่อกระเป๋าชั่วคราวยังไม่พร้อมใช้งาน เราจะแจ้งผู้เข้าร่วม White List เมื่อพร้อมใช้งาน",
+  "presale_whitelist_only": "การเข้าร่วม pre-sale สามารถเข้าร่วมได้เฉพาะผู้ใช้ใน White List เท่านั้น",
+  "check_wallet": "ตรวจสอบกระเป๋าเงิน"
 }

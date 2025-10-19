@@ -7,6 +7,7 @@ export default function CabinetContent({
   children,
   title,
   bgImage,
+  bgColor,
   titleStyles,
   titleRightElement,
   ...rest
@@ -14,10 +15,18 @@ export default function CabinetContent({
   return (
     <>
       <Helmet>
-        <body
-          style={`background-image: url('${bgImage}'); background-size: cover; background-attachment: fixed`}
-        />
+        <style>{`
+    body {
+      background: ${bgColor || (bgImage ? `url('${bgImage}')` : 'none')};
+      ${
+        !bgColor && bgImage
+          ? 'background-size: cover; background-attachment: fixed; background-repeat: no-repeat;'
+          : ''
+      }
+    }
+  `}</style>
       </Helmet>
+
       <Box
         pos="relative"
         pt="20px"
