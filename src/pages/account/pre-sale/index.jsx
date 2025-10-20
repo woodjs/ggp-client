@@ -31,11 +31,11 @@ export default function PagePreSale() {
     seconds: 0,
   });
 
-  const targetDate = dayjs.tz('2025-10-21T00:00:00', 'Asia/Bangkok');
+  const targetDate = dayjs.tz('2025-10-27T22:00:00', 'Europe/Moscow');
 
   useEffect(() => {
     const updateTimer = () => {
-      const now = dayjs().tz('Asia/Bangkok');
+      const now = dayjs().tz('Europe/Moscow');
       const diff = targetDate.diff(now);
 
       if (diff <= 0) {
